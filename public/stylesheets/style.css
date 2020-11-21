@@ -158,7 +158,10 @@ nav{
   width: 90%;
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
   flex-wrap: wrap;
+=======
+>>>>>>> origin
 }
 
 .product-card{
@@ -801,7 +804,10 @@ img{
   }
 
   .container-flex{
+<<<<<<< HEAD
     display: flex;
+=======
+>>>>>>> origin
     flex-wrap: wrap;
   }
 
@@ -855,6 +861,7 @@ img{
     width: 100%;
   }
 
+<<<<<<< HEAD
 }
 
 
@@ -937,3 +944,6 @@ img{
 .login-box a:hover {
   color: #fff;
 }
+=======
+}
+>>>>>>> origin

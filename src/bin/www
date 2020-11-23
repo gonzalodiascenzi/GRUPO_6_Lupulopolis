@@ -4,7 +4,11 @@
  * Module dependencies.
  */
 
+<<<<<<< HEAD
+var app = require('../../app');
+=======
 var app = require('../app');
+>>>>>>> origin
 var debug = require('debug')('site:server');
 var http = require('http');
 

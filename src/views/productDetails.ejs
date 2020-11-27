@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %> 
+<body>
+<%- include('./partials/headerNavbar') %> 
+
+    <div class = "card-wrapper">
+      <div class = "card">
+        <!-- card left -->
+        <div class = "product-imgs">
+          <div class = "img-display">
+            <div class = "img-showcase">
+              <img src = "/images/producto2.png" alt = "shoe image">
+              <img src = "/images/producto2.png" alt = "shoe image">
+              <img src = "/images/producto2.png" alt = "shoe image">
+              <img src = "/images/producto2.png" alt = "shoe image">
+            </div>
+          </div>
+
+          <h2>Productos relacionados</h2>
+          
+          <div class = "img-select">
+
+            <div class = "img-item">
+              <a href = "#" data-id = "1">
+                <img src = "/images/producto2.png" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "2">
+                <img src = "/images/producto2.png" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "3">
+                <img src = "/images/producto2.png" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "4">
+                <img src = "/images/producto2.png" alt = "shoe image">
+              </a>
+            </div>
+
+          </div>
+        </div>
+        <!-- card right -->
+        <div class = "product-content">
+          <h2 class = "product-title">Cerveza Corona x6</h2>
+          <div class = "product-rating">
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star-half-alt"></i>
+            <span>4.7(21)</span>
+          </div>
+
+          <div class = "product-price">
+            <p class = "price">Precio: <span>$249.00</span></p>
+          </div>
+
+          <div class = "product-detail">
+            <h2>Sobre el producto: </h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.</p>
+            <ul>
+              <li>Unidades: <span>6</span></li>
+              <li>Available: <span>Stock</span></li>
+              <li>Tipo: <span>Rubia</span></li>
+              <li>Medidas: <span>375cc</span></li>
+              <li>Envio: <span>Free</span></li>
+            </ul>
+          </div>
+
+          <div class = "purchase-info">
+            <input type = "number" min = "0" value = "1">
+            <button type = "button" class = "btn">
+              <i class = "fas fa-shopping-cart"></i>
+              Comprar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+<%- include('./partials/footer') %>
+</body>
+</html>

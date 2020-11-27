@@ -14,19 +14,36 @@ Nuestro objetivo esta enfocado en empresas que fabriquen cervezas como tambien e
 <br>
 <p>
 
+<<<<<<< HEAD
 ## `EQUIPO:`
 El equipo esta conformado por los siguientes tres integrantes: <br>
+=======
+# EQUIPO
+El equipo esta conformado por 3 integrantes.
+* `Matias Bossa Valvede`, 26 años, Estudiante de la Tec Univ en Desarrollo de Software (ULP) y Becado en el curso de Desarrollo Web FullStack (Digital House)
+- `Gonzalo Patricio Di Ascenzi Severini` estudiante de Ingenieria Informática en UNSTA.
+    - Tercer año de Ing. Informática (UNSTA)  
+    - Diplomatura en estrategia de ciberseguridad (UNSTA) OCT 2020 - ACUALMENTE
+    - Programación Web Full Stack (Digital House) 
+>>>>>>> master
 
 ### `Matias Bossa Valvede:` 
 - 26 años 
 - Estudiante de Tecnicatura Universitaria en Desarrollo de Software (ULP) 
 - Becario del Curso de Programacion Web FullStack (Digital House) <br>
 
+<<<<<<< HEAD
 ### `Gonzalo Patricio Di Ascenzi Severini:`  
 - 21 años 
 - Estudiante de Ingenieria Informática (UNSTA) 
 -  Cursando Diplomatura en estrategia de ciberseguridad (UNSTA)
 - Cursando Programación Web Full Stack (Digital House) <br>
+=======
+# TRELLO
+* https://trello.com/b/tw2Ev49x/proyecto-lupulopolis
+
+# BUSQUEDA DE INSPIRACION
+>>>>>>> master
 
 ### `Natalia María Cuello:`
 - 30 años 

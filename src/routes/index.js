@@ -30,7 +30,4 @@ router.get('/productCart', function(req, res, next) {
 });
 
 
-
-
-
 module.exports = router;

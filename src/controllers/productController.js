@@ -1,4 +1,4 @@
-const fs = require('fs');
+/* const fs = require('fs');
 const path = require('path');
 const { index } = require('../../../mercadoliebre/src/controllers/productsController');
 
@@ -32,4 +32,4 @@ const controller = {
             allProducts : allProducts
         });
     }
-};
+}; */

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const productsFilePath = path.resolve(__dirname, '../data/vinos.json');
+const productsFilePath = path.resolve(__dirname, '../data/productData.json');
 const multer = require('multer');
 
 const helper = { 
@@ -23,7 +23,7 @@ const helper = {
     upload(){
         const storage = multer.diskStorage({
             destination: function (req, file, cb) {
-              cb(null, __dirname + '/../../public/img')
+              cb(null, __dirname + '/../../public/images')
             },
             filename: function (req, file, cb) {
               cb(null, Date.now() + '-' + path.extname(file.originalname))

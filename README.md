@@ -36,7 +36,7 @@ El equipo esta conformado por los siguientes tres integrantes: <br>
 <br>
 <p>
     
-## TRELLO
+## `EQUIPO:`
 * https://trello.com/b/tw2Ev49x/proyecto-lupulopolis
 
 ## `BUSQUEDA DE INSPIRACION:`

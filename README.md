@@ -20,7 +20,7 @@ El equipo esta conformado por los siguientes tres integrantes: <br>
 ### `Matias Bossa Valvede:` 
 - 26 años 
 - Estudiante de Tecnicatura Universitaria en Desarrollo de Software (ULP) 
-- Becario del Curso de Programacion Web FullStack (Digital House) <br>
+- Becado del Curso de Programacion Web FullStack (Digital House) <br>
 
 ### `Gonzalo Patricio Di Ascenzi Severini:`  
 - 21 años 

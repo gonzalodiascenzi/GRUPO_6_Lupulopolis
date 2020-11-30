@@ -27,5 +27,8 @@ router.post('/create', upload.any(), productsController.store);
 /*** DETAIL PRODUCT ***/
 router.get('/:id', productsController.detail);
 
+/*** EDIT PRODUCT ***/
+router.get('/:id/edit', productsController.edit);
+
 
 module.exports = router;

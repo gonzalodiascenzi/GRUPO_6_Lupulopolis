@@ -64,6 +64,13 @@ const controller = {
         return res.render('productDetails', {
             product: product
         });
+    },
+    edit: (req, res) => {
+        const product = getAllProducts().find(product => product.id == req.params.id);
+
+        return res.render('product-create-form', {
+            product: product
+        });
     }
 };
 

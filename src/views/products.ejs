@@ -4,7 +4,7 @@
   <body>
   <%- include('./partials/headerNavbar') %> 
   <main>
-    <h2>Ofertas</h2>
+    <h2>Productos</h2>
     <div class="ofert container-flex">
 
     <% for (product of allProducts) { %> 
@@ -22,23 +22,6 @@
 
     </div>
     
-    <h2>Destacados</h2>
-    <div class="selected container-flex">
-
-      <% for (product of allProducts) { %> 
-        <div class="product-card">
-          <div class="imgBx">
-            <img src="/images/products/<%= product.image %>" alt="">
-          </div>
-          <div class="contentBx">
-            <h3><%= product.product_name %></h3>
-            <h2 class="price"><%= product.price %><small>.99</small></h2>
-            <a href="#" class="buy">Buy Now</a>
-          </div>
-        </div>
-      <% } %> 
-      
-    </div>
    </main>
    <%- include('./partials/footer') %>
   </body>

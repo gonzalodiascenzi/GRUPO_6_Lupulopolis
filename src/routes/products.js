@@ -1,7 +1,7 @@
 // ************ Require's ************
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
+const multer  = require('multer');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -20,4 +20,15 @@ const productsController = require('../controllers/productsController');
 /*** GET ALL PRODUCTS ***/
 router.get('/', productsController.index);
 
-  
+/*** CREATE PRODUCT ***/
+router.get('/create', productsController.create);
+router.post('/create', upload.any(), productsController.store);
+
+/*** DETAIL PRODUCT ***/
+router.get('/:id', productsController.detail);
+
+/*** EDIT PRODUCT ***/
+router.get('/:id/edit', productsController.edit);
+
+
+module.exports = router;

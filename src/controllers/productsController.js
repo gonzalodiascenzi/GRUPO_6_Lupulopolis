@@ -1,42 +1,77 @@
+const fs = require('fs');
+const path = require('path');
 
-const helper = require('../helpers/helpers') // Requiero a las funciones de helpers
 
+const productsFilePath = path.resolve(__dirname, '../data/productData.json');
 
-//controllers 
+function getAllProducts(){
 
-const productController = {
-	detail: (req, res) => {
-		const id = req.params.id;
-		const products = helper.getAllProducts();
-		const result = products.find((product) => {
-			return product.id == id
-		});
+	const jsonProducts = fs.readFileSync(productsFilePath, 'utf-8');
 
-		res.render('detail', {product: result});
-	},
+	const productsParsed = JSON.parse(jsonProducts);
 
-    cart: (req, res) => {
-		const products = helper.getAllProducts();
-		const specialsProducts = products.filter((product) => {
-			return product.id < 4;
-		});
-
-		let subTotal = 0;
-		for (let i = 0; i < specialsProducts.length; i++) {
-			const element = specialsProducts[i].price;
-			subTotal += element;
-		}
-		const shipping = 400;
-		const total = subTotal + shipping;
-		
-		res.render('cart', {products: specialsProducts, subTotal: subTotal, shipping: shipping, total: total});
-    },
-
-    listaProductos: (req, res) => {
-        const products = helper.getAllProducts();
-        res.render('listProducts', {products: products});
-    }
-
+	return productsParsed;
 }
 
-module.exports = productsController;
+function writeProducts(arrayToTransform) {
+	const productsJson = JSON.stringify(arrayToTransform, null, " ");
+	fs.writeFileSync(productsFilePath, productsJson);
+}
+
+function generateNewId(){
+	const products = getAllProducts();
+	return products.pop().id + 1;
+}
+
+const controller = {
+    //Root - Inicio
+    index: (req, res) => {
+        const allProducts = getAllProducts();
+
+        res.render('products', {
+            allProducts : allProducts
+        });
+    },
+    create: (req, res) => {
+        res.render('product-create-form');
+    },
+    store: (req, res, next) => {
+        const newProduct = {
+            id: generateNewId(),
+            product_name: req.body.product_name,
+            description: req.body.description,
+            image: req.files[0].filename,
+            category: req.body.category,
+            style: req.body.style,
+            volumen: req.body.volumen,
+            origin: req.body.origin,
+            brewer: req.body.brewer,
+            price: req.body.price,
+            discount: req.body.discount
+        }
+
+        console.log(newProduct);
+        const products = getAllProducts();
+        const productsToSave = [...products, newProduct];
+
+        writeProducts(productsToSave);
+
+        res.redirect('/products');
+    },
+    detail: (req, res) => {
+        const product = getAllProducts().find(product => product.id == req.params.id);
+
+        return res.render('productDetails', {
+            product: product
+        });
+    },
+    edit: (req, res) => {
+        const product = getAllProducts().find(product => product.id == req.params.id);
+
+        return res.render('product-create-form', {
+            product: product
+        });
+    }
+};
+
+module.exports = controller;

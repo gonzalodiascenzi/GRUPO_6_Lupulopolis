@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA_Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupulopolis E-commerce</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+    <!-- Light-slider  CSS-->
+    <link rel="stylesheet" type="text/css" href="styles/lightslider.css">
+    <!-- Jquery -->
+    <script  src="scripts/jquery.js"></script>
+    <!-- Light-Slider JS -->
+    <script type="text/javascript" src="scripts/lightslider.js"></script>
+    <!-- INDEX JS -->
+    <script type="text/javascript" src="scripts/index.js"></script>
+</head>
+<body>
+   <header class="navbar">
+
+        <div class="hamburger-menu">
+            <span class="fas fa-bars"></span>
+        </div>
+ 
+        <div class="logo-menu">
+            <a href="./" class="logo-navbar">
+                <span><img src="img/logo-navbar.png" alt="logo-navbar"></span>
+            </a>    
+        </div>
+ 
+        <div class="logo-login-cart">
+            <button id="login" onclick="hola()">Iniciar sesion</button>
+            <!-- <span class="fas fa-user-alt"></span> -->
+            <span class="fas fa-shopping-cart"></span>
+        </div>
+        
+        <nav class="navbar-container">
+           <div class="navbar-menu">
+                <ul class="navbar-links">
+                    <li class="navbar-item"><a class="navbar-link" href="#">Promos</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href="#">Cervezas</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href="#">Eventos</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href="#">Contacto</a></li>
+                </ul>
+
+                <div class="search-bar">
+                    <input  class="nav-search"  type="text" placeholder="Buscador de productos">
+                    <button type="submit" class="logo-search"><span class="fas fa-search"></span></button>
+                </div>
+           </div>
+        </nav> 
+
+    </header> 
+    
+    <main>
+        
+        <section class="slider-ofert">
+            <h2>Ofertas de Verano!</h2>
+            <ul id="autoWidth" class="cs-hidden">
+                <li class="item-a">
+                    <!-- Product 1 -->
+                    <div class="box">
+                        <!-- Image box -->
+                        <div class="slide-img">
+                            <img src="img/product-2.jpg" alt="1">
+                            <!-- Overlayer -->
+                            <div class="overlay">
+                                <!-- Buy btn -->
+                                <a href="#" class="buy-btn">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Detail box -->
+                        <div class="detail-box">
+                            <!-- Type -->
+                            <div class="type">
+                                <a href="#">Nombre de cerveza</a>
+                                <span>Estilo</span>
+                            </div>
+                            <!-- Price -->
+                            <a href="#" class="price">$23</a>            
+                        </div>
+                        <button class="add-btn" type="submit">Agregar</button>    
+                    </div>
+                </li>
+                <li class="item-b">
+                    <!-- Product 1 -->
+                    <div class="box">
+                        <!-- Image box -->
+                        <div class="slide-img">
+                            <img src="img/product-2.jpg" alt="2">
+                            <!-- Overlayer -->
+                            <div class="overlay">
+                                <!-- Buy btn -->
+                                <a href="#" class="buy-btn">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Detail box -->
+                        <div class="detail-box">
+                            <!-- Type -->
+                            <div class="type">
+                                <a href="#">Nombre de cerveza</a>
+                                <span>Estilo</span>
+                            </div>
+                            <!-- Price -->
+                            <a href="#" class="price">$23</a>
+                        </div>
+                        <button class="add-btn" type="submit">Agregar</button>
+                    </div>
+                </li>
+                <li class="item-c">
+                    <!-- Product 1 -->
+                    <div class="box">
+                        <!-- Image box -->
+                        <div class="slide-img">
+                            <img src="img/product-2.jpg" alt="3">
+                            <!-- Overlayer -->
+                            <div class="overlay">
+                                <!-- Buy btn -->
+                                <a href="#" class="buy-btn">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Detail box -->
+                        <div class="detail-box">
+                            <!-- Type -->
+                            <div class="type">
+                                <a href="#">Nombre de cerveza</a>
+                                <span>Estilo</span>
+                            </div>
+                            <!-- Price -->
+                            <a href="#" class="price">$23</a>
+                        </div>
+                        <button class="add-btn" type="submit">Agregar</button>
+                    </div>
+                </li>
+                <li class="item-d">
+                    <!-- Product 1 -->
+                    <div class="box">
+                        <!-- Image box -->
+                        <div class="slide-img">
+                            <img src="img/product-2.jpg" alt="4">
+                            <!-- Overlayer -->
+                            <div class="overlay">
+                                <!-- Buy btn -->
+                                <a href="#" class="buy-btn">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Detail box -->
+                        <div class="detail-box">
+                            <!-- Type -->
+                            <div class="type">
+                                <a href="#">Nombre de cerveza</a>
+                                <span>Estilo</span>
+                            </div>
+                            <!-- Price -->
+                            <a href="#" class="price">$23</a>
+                        </div>
+                        <button class="add-btn" type="submit">Agregar</button>
+                    </div>
+                </li>
+                <li class="item-e">
+                    <!-- Product 1 -->
+                    <div class="box">
+                        <!-- Image box -->
+                        <div class="slide-img">
+                            <img src="img/product-2.jpg" alt="5">
+                            <!-- Overlayer -->
+                            <div class="overlay">
+                                <!-- Buy btn -->
+                                <a href="#" class="buy-btn">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Detail box -->
+                        <div class="detail-box">
+                            <!-- Type -->
+                            <div class="type">
+                                <a href="#">Nombre de cerveza</a>
+                                <span>Estilo</span>
+                            </div>
+                            <!-- Price -->
+                            <a href="#" class="price">$23</a>
+                        </div>
+                        <button class="add-btn" type="submit">Agregar</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="slider-ofert">
+            <h2>Productos Destacados</h2>
+            <ul id="autoWidth2" class="cs-hidden 2">
+                <li class="item-f">
+                    <!-- Product 1 -->
+                    <div class="box">
+                        <!-- Image box -->
+                        <div class="slide-img">
+                            <img src="img/product-2.jpg" alt="1">
+                            <!-- Overlayer -->
+                            <div class="overlay">
+                                <!-- Buy btn -->
+                                <a href="#" class="buy-btn">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Detail box -->
+                        <div class="detail-box">
+                            <!-- Type -->
+                            <div class="type">
+                                <a href="#">Nombre de cerveza</a>
+                                <span>Estilo</span>
+                            </div>
+                            <!-- Price -->
+                            <a href="#" class="price">$23</a>
+                        </div>
+                        <button class="add-btn" type="submit">Agregar</button>
+                    </div>
+                </li>
+                <li class="item-g">
+                    <!-- Product 1 -->
+                    <div class="box">
+                        <!-- Image box -->
+                        <div class="slide-img">
+                            <img src="img/product-2.jpg" alt="2">
+                            <!-- Overlayer -->
+                            <div class="overlay">
+                                <!-- Buy btn -->
+                                <a href="#" class="buy-btn">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Detail box -->
+                        <div class="detail-box">
+                            <!-- Type -->
+                            <div class="type">
+                                <a href="#">Nombre de cerveza</a>
+                                <span>Estilo</span>
+                            </div>
+                            <!-- Price -->
+                            <a href="#" class="price">$23</a>
+                        </div>
+                        <button class="add-btn" type="submit">Agregar</button>
+                    </div>
+                </li>
+                <li class="item-h">
+                    <!-- Product 1 -->
+                    <div class="box">
+                        <!-- Image box -->
+                        <div class="slide-img">
+                            <img src="img/product-2.jpg" alt="3">
+                            <!-- Overlayer -->
+                            <div class="overlay">
+                                <!-- Buy btn -->
+                                <a href="#" class="buy-btn">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Detail box -->
+                        <div class="detail-box">
+                            <!-- Type -->
+                            <div class="type">
+                                <a href="#">Nombre de cerveza</a>
+                                <span>Estilo</span>
+                            </div>
+                            <!-- Price -->
+                            <a href="#" class="price">$23</a>
+                        </div>
+                        <button class="add-btn" type="submit">Agregar</button>
+                    </div>
+                </li>
+                <li class="item-i">
+                    <!-- Product 1 -->
+                    <div class="box">
+                        <!-- Image box -->
+                        <div class="slide-img">
+                            <img src="img/product-2.jpg" alt="4">
+                            <!-- Overlayer -->
+                            <div class="overlay">
+                                <!-- Buy btn -->
+                                <a href="#" class="buy-btn">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Detail box -->
+                        <div class="detail-box">
+                            <!-- Type -->
+                            <div class="type">
+                                <a href="#">Nombre de cerveza</a>
+                                <span>Estilo</span>
+                            </div>
+                            <!-- Price -->
+                            <a href="#" class="price">$23</a>
+                        </div>
+                        <button class="add-btn" type="submit">Agregar</button>
+                    </div>
+                </li>
+                <li class="item-j">
+                    <!-- Product 1 -->
+                    <div class="box">
+                        <!-- Image box -->
+                        <div class="slide-img">
+                            <img src="img/product-2.jpg" alt="5">
+                            <!-- Overlayer -->
+                            <div class="overlay">
+                                <!-- Buy btn -->
+                                <a href="#" class="buy-btn">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Detail box -->
+                        <div class="detail-box">
+                            <!-- Type -->
+                            <div class="type">
+                                <a href="#">Nombre de cerveza</a>
+                                <span>Estilo</span>
+                            </div>
+                            <!-- Price -->
+                            <a href="#" class="price">$23</a>
+                        </div>
+                        <button class="add-btn" type="submit">Agregar</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="beer-accessories">
+            <p>Accesorios Cervezeros!</p>
+            <button>Ver mas</button>
+        </section> 
+        
+    </main>
+
+    <footer>
+        <section class="box-footer">
+            <ul>
+                <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+            </ul>
+
+            <p>Copyright 2020</p>
+        </section>
+    </footer>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

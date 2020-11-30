@@ -8,6 +8,7 @@ const mainController = require('../controllers/mainController');
 
 router.get('/', mainController.index);
 
+
 router.get('/productDetails', function(req, res, next) {
   res.render('productDetails');
 });

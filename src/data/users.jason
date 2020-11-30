@@ -1,0 +1,81 @@
+[{
+  "id": 1,
+  "first_name": "Natalia",
+  "last_name": "Cuello",
+  "email": "naticuello@gmail.com.com",
+  "password": "9QR1M1",
+  "category": "user",
+  "image": "user_1.jpg"
+}, {
+  "id": 2,
+  "first_name": "Gonzalo",
+  "last_name": "Di Acenci",
+  "email": "Gonza.a@gmail.com",
+  "password": "bzk0gs9D7HuZ",
+  "category": "user",
+  "image": "user_2.jpg"
+}, {
+  "id": 3,
+  "first_name": "Matias",
+  "last_name": "Bossa",
+  "email": "Matiasb@gmail.com",
+  "password": "33NDMn",
+  "category": "user",
+  "image": "user_3.jpg"
+}, {
+  "id": 4,
+  "first_name": "Alexandra",
+  "last_name": "Jaimez",
+  "email": "ajaimez3@yahoo.com.ar",
+  "password": "NnLRskCpTe5C",
+  "category": "user",
+  "image": "user_4.jpg"
+}, {
+  "id": 5,
+  "first_name": "Catalin",
+  "last_name": "Bach",
+  "email": "sbach4@hotmail.com",
+  "password": "eIRywvYpIw",
+  "category": "user",
+  "image": "user_5.jpg"
+}, {
+  "id": 6,
+  "first_name": "Veronica",
+  "last_name": "Euesden",
+  "email": "veuesden5@hotmail.com",
+  "password": "X7D8v5c2X",
+  "category": "user",
+  "image": "user_6.jpg"
+}, {
+  "id": 7,
+  "first_name": "Isabella",
+  "last_name": "Gabini",
+  "email": "bellagab6@hotmail.com",
+  "password": "P7HheG7DpNq",
+  "category": "user",
+  "image": "user_7.jpg"
+}, {
+  "id": 8,
+  "first_name": "Fernando",
+  "last_name": "Reijol",
+  "email": "fer7123@engadget.com",
+  "password": "wNgeB9",
+  "category": "user",
+  "image": "user_8.jpg"
+}, {
+  "id": 9,
+  "first_name": "Dante",
+  "last_name": "Musolino",
+  "email": "danmuso@hotmail.com",
+  "password": "EEgNTgoDSEm",
+  "category": "user",
+  "image": "user_9.jpg"
+}, {
+  "id": 10,
+  "first_name": "Agustina",
+  "last_name": "Huband",
+  "email": "ahuband9@tripadvisor.com",
+  "password": "2jOMG6",
+  "category": "user",
+  "image": "user_10.jpg"
+}

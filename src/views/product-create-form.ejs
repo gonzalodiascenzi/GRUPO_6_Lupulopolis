@@ -30,8 +30,9 @@
                 </tr>
             </tbody>
         </table> -->
-    <% if(typeof product !== 'undefined') { %> 
-        <form class="form-create-product" method="POST" enctype="multipart/form-data">  
+    <% if(typeof product !== 'undefined') {%> 
+
+        <form action="/products/<%= product.id %>/edit?_method=PUT" class="form-create-product" method="POST" enctype="multipart/form-data">  
             
             <div>
                 <p>
@@ -47,7 +48,7 @@
                 <p>
                     <label for="category">Categoria *</label>
                     <select name="category" id="category">
-                        <option value="Cerveza selected">Cerveza</option>
+                        <option value="Cerveza">Cerveza</option>
                         <option value="Vino">Vino</option>
                         <option value="Whisky">Whisky</option>
                     </select>
@@ -89,8 +90,11 @@
                 </p>
             </div>
 
-            <button class="btn-product-submit" type="submit">Crear producto</button>
+            <button class="btn-product-submit" type="submit">Modificar producto</button>
 
+        </form>
+        <form action="/products/<%= product.id %>/edit?_method=DELETE" method="POST" enctype="multipart/form-data">
+            <button class="btn-product-submit" type="submit">Borrar producto</button>
         </form>
         <% }else{ %> 
             <form class="form-create-product" method="POST" enctype="multipart/form-data">  

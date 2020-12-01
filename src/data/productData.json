@@ -50,18 +50,5 @@
   "brewer": "Grupo Modelo",
   "price": 600,
   "discount": 0
- },
- {
-  "id": 5,
-  "product_name": "CERVEZA HEINEKEN",
-  "description": "CERVEZA PREMIUM",
-  "image": "1606740987261-producto2.png",
-  "category": "Cerveza selected",
-  "style": "RUBIA",
-  "volumen": "350CC",
-  "origin": "ALEMANA",
-  "brewer": "HEINEKEN",
-  "price": "90",
-  "discount": "0"
  }
 ]

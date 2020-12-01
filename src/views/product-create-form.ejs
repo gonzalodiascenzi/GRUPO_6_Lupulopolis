@@ -37,12 +37,12 @@
             <div>
                 <p>
                     <label for="product_name">Nombre del producto *</label>
-                    <input name="product_name" class="create-input" type="text" value="<%= product.product_name %> ">
+                    <input name="product_name" class="create-input" type="text" value="<%= product.product_name %>">
                 </p>
     
                 <p>
                     <label for="image">Imagen *</label>
-                    <input name="image" class="create-input" type="file">
+                    <input name="image" class="create-input" type="file" value="<%= product.image %>">
                 </p>
     
                 <p>
@@ -56,37 +56,37 @@
     
                 <p>
                     <label for="style">Estilo</label>
-                    <input name="style" class="create-input" type="text">   
+                    <input name="style" class="create-input" type="text" value="<%= product.style %>">   
                 </p>  
     
                 <p>
                     <label for="volumen">Volumen *</label>
-                    <input name="volumen" class="create-input" type="text"> 
+                    <input name="volumen" class="create-input" type="text" value="<%= product.volumen %>"> 
                 </p>  
     
                 <p>
                     <label for="origin">Origen</label>
-                    <input name="origin" class="create-input" type="text">
+                    <input name="origin" class="create-input" type="text" value="<%= product.origin %>">
                 </p>
                 
                 <p>
                     <label for="brewer">Marca *</label>
-                    <input name="brewer" class="create-input" type="text">
+                    <input name="brewer" class="create-input" type="text" value="<%= product.brewer %>">
                 </p>
     
                 <p>
                     <label for="price">Precio *</label>
-                    <input name="price" class="create-input" type="text">
+                    <input name="price" class="create-input" type="text" value="<%= product.price %>">
                 </p>
     
                 <p>
                     <label for="discount">Descuento</label>
-                    <input name="discount" class="create-input" type="text">
+                    <input name="discount" class="create-input" type="text" value="<%= product.discount %>">
                 </p>
     
                 <p>
                     <label for="description">Descripcion</label>
-                    <textarea name="description" id="description-form" cols="38" rows="10"></textarea>
+                    <textarea name="description" id="description-form" cols="38" rows="10" ><%= product.product_name %></textarea>
                 </p>
             </div>
 
@@ -94,7 +94,7 @@
 
         </form>
         <form action="/products/<%= product.id %>/edit?_method=DELETE" method="POST" enctype="multipart/form-data">
-            <button class="btn-product-submit" type="submit">Borrar producto</button>
+            <button class="btn-product-submit btn-remove" type="submit">Borrar producto</button>
         </form>
         <% }else{ %> 
             <form class="form-create-product" method="POST" enctype="multipart/form-data">  

@@ -29,7 +29,7 @@ const controller = {
         const allProducts = getAllProducts();
 
         res.render('products', {
-            allProducts : allProducts
+            allProducts: allProducts
         });
     },
     create: (req, res) => {
@@ -68,9 +68,46 @@ const controller = {
     edit: (req, res) => {
         const product = getAllProducts().find(product => product.id == req.params.id);
 
-        return res.render('product-create-form', {
-            product: product
+        if (typeof product !== 'undefined') {
+            return res.render('product-create-form', {
+                product: product
+            });
+        }
+
+        return res.render('product-create-form');
+        
+    },
+    update: (req, res) => {
+        const products = getAllProducts();
+        console.log('gola');
+        const changedProducts = products.map(product => {
+            if (req.params.id == product.id) {
+                product.product_name = req.body.product_name,
+                product.description = req.body.description,
+                product.image = req.files[0].filename,
+                product.category = req.body.category,
+                product.style = req.body.style,
+                product.volumen = req.body.volumen,
+                product.origin = req.body.origin,
+                product.brewer = req.body.brewer,
+                product.price = req.body.price,
+                product.discount = req.body.discount
+            }
+
+            return product;
         });
+
+        writeProducts(changedProducts);
+
+        res.redirect('/products/' + req.params.id);
+    },
+    remove: (req, res) => {
+        const products = getAllProducts();
+        const productsRemoved = products.filter(product => product.id != req.params.id);
+
+        writeProducts(productsRemoved);
+        console.log(productsRemoved);
+        res.redirect('/products');
     }
 };
 

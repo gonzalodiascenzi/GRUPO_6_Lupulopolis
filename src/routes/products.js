@@ -29,6 +29,9 @@ router.get('/:id', productsController.detail);
 
 /*** EDIT PRODUCT ***/
 router.get('/:id/edit', productsController.edit);
+router.put('/:id/edit', upload.any(), productsController.update);
 
+/*** DELETE PRODUCT ***/
+router.delete('/:id/edit', productsController.remove);
 
 module.exports = router;

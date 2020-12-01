@@ -874,8 +874,19 @@ label span {
   transition: background-color .3s;
 }
 
+.btn-remove{
+  position: absolute;
+  margin-top: 15px;
+  right: 0;
+  background-color: #a44;
+}
+
+.btn-remove:hover{
+  background-color: #a22 !important;
+}
+
 .btn-product-submit:hover{
-  background-color: #6b6;
+  background-color: #164;
 }
 
 #description-form{

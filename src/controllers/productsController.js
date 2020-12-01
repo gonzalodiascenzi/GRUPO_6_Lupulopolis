@@ -79,7 +79,6 @@ const controller = {
     },
     update: (req, res) => {
         const products = getAllProducts();
-        console.log('gola');
         const changedProducts = products.map(product => {
             if (req.params.id == product.id) {
                 product.product_name = req.body.product_name,

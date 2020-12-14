@@ -1,0 +1,54 @@
+[
+ {
+  "id": 1,
+  "product_name": "Cerveza Corona x6",
+  "description": "Six pack de Cerveza Corona",
+  "image": "producto2.png",
+  "category": "beer",
+  "style": "pilsener",
+  "volumen": "375cc",
+  "origin": "Mexico",
+  "brewer": "Grupo Modelo",
+  "price": 600,
+  "discount": 0
+ },
+ {
+  "id": 2,
+  "product_name": "Cerveza Corona x6",
+  "description": "Six pack de Cerveza Corona",
+  "image": "producto2.png",
+  "category": "beer",
+  "style": "pilsener",
+  "volumen": "375cc",
+  "origin": "Mexico",
+  "brewer": "Grupo Modelo",
+  "price": 600,
+  "discount": 0
+ },
+ {
+  "id": 3,
+  "product_name": "Cerveza Corona x6",
+  "description": "Six pack de Cerveza Corona",
+  "image": "producto2.png",
+  "category": "beer",
+  "style": "pilsener",
+  "volumen": "375cc",
+  "origin": "Mexico",
+  "brewer": "Grupo Modelo",
+  "price": 600,
+  "discount": 0
+ },
+ {
+  "id": 4,
+  "product_name": "Cerveza Corona x6",
+  "description": "Six pack de Cerveza Corona",
+  "image": "producto2.png",
+  "category": "beer",
+  "style": "pilsener",
+  "volumen": "375cc",
+  "origin": "Mexico",
+  "brewer": "Grupo Modelo",
+  "price": 600,
+  "discount": 0
+ }
+]

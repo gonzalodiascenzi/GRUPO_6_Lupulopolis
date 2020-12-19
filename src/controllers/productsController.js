@@ -28,12 +28,12 @@ const controller = {
     index: (req, res) => {
         const allProducts = getAllProducts();
 
-        res.render('products/products', {
+        res.render('products', {
             allProducts: allProducts
         });
     },
     create: (req, res) => {
-        res.render('products/product-create-form');
+        res.render('product-create-form');
     },
     store: (req, res, next) => {
         const newProduct = {
@@ -61,7 +61,7 @@ const controller = {
     detail: (req, res) => {
         const product = getAllProducts().find(product => product.id == req.params.id);
 
-        return res.render('products/productDetails', {
+        return res.render('productDetails', {
             product: product
         });
     },
@@ -74,7 +74,7 @@ const controller = {
             });
         }
 
-        return res.render('products/product-create-form');
+        return res.render('product-create-form');
         
     },
     update: (req, res) => {
@@ -98,7 +98,7 @@ const controller = {
 
         writeProducts(changedProducts);
 
-        res.redirect('/products' + req.params.id);
+        res.redirect('/products/' + req.params.id);
     },
     remove: (req, res) => {
         const products = getAllProducts();

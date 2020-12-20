@@ -1,12 +1,12 @@
 [
     {
-        "id" : 0,
-        "first_name" : "",
-        "last_name" : "",
-        "surname" : "",
-        "email" : "",
-        "password" : "",
-        "category" : "",
-        "image" : ""
+        "id" : 1,
+        "first_name" : "Natalia",
+        "last_name" : "Cuello",
+        "surname" : "Naty",
+        "email" : "naty@naty.com",
+        "password" : "asd",
+        "category" : "Usuario",
+        "image" : "Mujer.png"
     }
 ]

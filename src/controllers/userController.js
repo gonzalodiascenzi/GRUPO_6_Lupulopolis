@@ -7,7 +7,7 @@ const { fileLoader } = require('ejs');
 const { getMaxListeners } = require('process');
 
 
-const usersFilePath = path.join(__dirname,'../database/users.json');
+const usersFilePath = path.join(__dirname,'../data/user.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, {encoding:'utf-8'}));
 
 const writeData = function(data,filePath){
@@ -22,52 +22,52 @@ const newID = function(){
 
 module.exports = {
     showRegister: (req, res) => {
-        return res.render('user/user-register-form');
+        return res.send('routes/users');
     },
     processRegister: (req, res, next) => {
         let errors = validationResult(req);
         console.log(errors)
         if (!errors.isEmpty()){
-            return res.render('user/user-register-form', {errors:errors.errors})
+            return res.send('routes/users', {errors:errors.errors})
         } else {
             newUserID = newID();
             let newUser ={
                 id: newUserID,
                 email:req.body.email,
                 password:bycrypt.hashSync(req.body.password, 10),
-                avatar:'default-image.png'
+                avatar:'Mujer.png'
             }
             if (req.files[0]){
                 newUser.avatar=req.files[0].filename; 
             }
             let usersToSave = [...users, newUser];
             writeData(usersToSave, usersFilePath);
-            return res.render('user/profile', {user:newUser})};
+            return res.send('view/profile', {user:newUser})};
     },
     showLogin: (req, res) => {
-        return res.render('user/user-login-form');
+        return res.send('routes/users');
     },
     processLogin: (req, res) => {
         let errors = validationResult(req);
         
         if (!errors.isEmpty()){
-            return res.render('user/user-login-form', {errors:errors.errors})
+            return res.send('routes/users', {errors:errors.errors})
         }else{
             let userFound = users.find(function(user){return user.email == req.body.email})
                 if(!bycrypt.compareSync(req.body.password, userFound.password)){
-                res.render('user/user-login-form', {errors:[{param:"password", msg:"Contraseña incorrecta"}]})  
+                res.send('routes/users', {errors:[{param:"password", msg:"Contraseña incorrecta"}]})  
                 } else {
                 req.session.userLogged = userFound.email;
                     if (req.body.remember!=undefined){
                     res.cookie('userEmail',userFound.email,{maxAge:1000*60});
                     }
-                return res.render('user/profile', {user:userFound})
+                return res.send('view/profile', {user:userFound})
             }
             };
     },
     showProfile: (req, res) => {
         let userFound = users.find(function(user){return user.email == req.userEmail})
-        return res.render('user/profile',{user:userFound});
+        return res.send('view/profile',{user:userFound});
     },
     logout: (req, res) => {
         res.cookie('userEmail'," ",{maxAge:-60});

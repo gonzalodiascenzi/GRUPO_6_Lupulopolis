@@ -3,7 +3,7 @@ function auth(req,res,next){
         req.userEmail = req.session.userLogged ? req.session.userLogged : req.cookies.userEmail;
         next();
     } else {
-        res.redirect('/user/login');
+        res.redirect('/view/login');
     }
 };
 

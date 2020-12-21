@@ -11,6 +11,7 @@ var productsRouter = require('./routes/products');
 var usersRouter = require('./routes/users');
 
 const setLocals = require('./middlewares/setLocals');
+const cookiesExist = require('./middlewares/cookieExist');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(methodOverride('_method'));
 app.use(setLocals);
+app.use(cookiesExist);
 
 app.use('/', indexRouter);
 app.use('/products', productsRouter);

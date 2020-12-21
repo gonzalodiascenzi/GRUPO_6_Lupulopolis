@@ -24,7 +24,7 @@ const controller = {
         }
 
         if (req.body.remember) {
-            res.cookie("userLog", req.session.user);
+            res.cookie("userLog", req.session.user.id);
         }
     
         return res.redirect('/');
@@ -57,7 +57,7 @@ const controller = {
         return res.redirect('/users/login');
     },
     showProfile: (req, res) => {
-
+        res.render('users/profile')
     }
 }
 

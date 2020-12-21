@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const productsFilePath = path.resolve(__dirname, '../data/productData.json');
-const multer = require('multer');
 
 const helper = { 
     getAllProducts(){
@@ -16,25 +15,12 @@ const helper = {
     },
     
     generateNewId(){
-        const products = helper.getAllProducts();
+        const products = getAllProducts();
         return products.pop().id + 1;
-    },
-
-    upload(){
-        const storage = multer.diskStorage({
-            destination: function (req, file, cb) {
-              cb(null, __dirname + '/../../public/images')
-            },
-            filename: function (req, file, cb) {
-              cb(null, Date.now() + '-' + path.extname(file.originalname))
-            }
-          })
-            
-          return multer({ storage: storage })
-    },
-
+  },
+    
     delete(idToDelete){
-      let products = helper.getAllProducts();
+      let products = getAllProducts();
         const productToDelete = idToDelete;
         products = products.filter(function(product){
             return product.id != productToDelete;

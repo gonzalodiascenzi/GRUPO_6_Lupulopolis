@@ -1,17 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
+const productHelper = require('../helpers/productHelper');
 
 const productsFilePath = path.resolve(__dirname, '../data/productData.json');
-
-function getAllProducts(){
-
-	const jsonProducts = fs.readFileSync(productsFilePath, 'utf-8');
-
-	const productsParsed = JSON.parse(jsonProducts);
-
-	return productsParsed;
-}
 
 function writeProducts(arrayToTransform) {
 	const productsJson = JSON.stringify(arrayToTransform, null, " ");
@@ -19,14 +11,14 @@ function writeProducts(arrayToTransform) {
 }
 
 function generateNewId(){
-	const products = getAllProducts();
+	const products = productHelper.getAllProducts();
 	return products.pop().id + 1;
 }
 
 const controller = {
     //Root - Inicio
     index: (req, res) => {
-        const allProducts = getAllProducts();
+        const allProducts = productHelper.getAllProducts();
 
         res.render('products/products', {
             allProducts: allProducts
@@ -35,7 +27,7 @@ const controller = {
     create: (req, res) => {
         res.render('products/product-create-form');
     },
-    store: (req, res, next) => {
+    store: (req, res) => {
         const newProduct = {
             id: generateNewId(),
             product_name: req.body.product_name,
@@ -50,8 +42,7 @@ const controller = {
             discount: req.body.discount
         }
 
-        console.log(newProduct);
-        const products = getAllProducts();
+        const products = productHelper.getAllProducts();
         const productsToSave = [...products, newProduct];
 
         writeProducts(productsToSave);
@@ -59,14 +50,14 @@ const controller = {
         res.redirect('/products');
     },
     detail: (req, res) => {
-        const product = getAllProducts().find(product => product.id == req.params.id);
+        const product = productHelper.getAllProducts().find(product => product.id == req.params.id);
 
         return res.render('products/productDetails', {
             product: product
         });
     },
     edit: (req, res) => {
-        const product = getAllProducts().find(product => product.id == req.params.id);
+        const product = productHelper.getAllProducts().find(product => product.id == req.params.id);
         const productImagePath = path.resolve(__dirname, '/images/products/');
         if (typeof product !== 'undefined') {
 
@@ -79,7 +70,7 @@ const controller = {
         
     },
     update: (req, res) => {
-        const products = getAllProducts();
+        const products = productHelper.getAllProducts();
         console.log(req.file)
         const changedProducts = products.map(product => {
             if (req.params.id == product.id) {
@@ -103,7 +94,7 @@ const controller = {
         res.redirect('/products/' + req.params.id);
     },
     remove: (req, res) => {
-        const products = getAllProducts();
+        const products = productHelper.getAllProducts();
         const productsRemoved = products.filter(product => product.id != req.params.id);
 
         writeProducts(productsRemoved);

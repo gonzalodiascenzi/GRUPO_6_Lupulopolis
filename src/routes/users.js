@@ -1,13 +1,16 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const bcryptjs = require('bcryptjs');
 
+/* Controllers Require */
+const usersController = require('../controllers/usersController');
 
 
 /* GET users listing. */
 router.get('/login', usersController.showLogin);
+router.post('/login', usersController.processLogin);
 
-router.get('/register', function(req, res) {
-  res.render('users/register');
-});
+router.get('/register', usersController.showRegister);
+router.post('/register', usersController.processRegister)
 
 module.exports = router;

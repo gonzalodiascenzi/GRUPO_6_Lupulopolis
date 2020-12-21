@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <%- include('./partials/head') %> 
+  <%- include('../partials/head') %> 
   <body>
-    <%- include('./partials/headerNavbar') %>
+    <%- include('../partials/headerNavbar') %>
     
     <div class="container-form-create">
         <!-- <table>
@@ -42,7 +42,7 @@
     
                 <p>
                     <label for="image">Imagen *</label>
-                    <input name="image" class="create-input" type="file" value="<%= product.image %>">
+                    <input name="image" class="create-input" type="file">
                 </p>
     
                 <p>
@@ -161,6 +161,6 @@
         <% } %> 
     </div>
 
-    <%- include('./partials/footer') %> 
+    <%- include('../partials/footer') %> 
   </body>
 </html>

@@ -40,7 +40,7 @@ const controller = {
             id: generateNewId(),
             product_name: req.body.product_name,
             description: req.body.description,
-            image: req.files[0].filename,
+            image: req.file.filename,
             category: req.body.category,
             style: req.body.style,
             volumen: req.body.volumen,
@@ -67,23 +67,25 @@ const controller = {
     },
     edit: (req, res) => {
         const product = getAllProducts().find(product => product.id == req.params.id);
-
+        const productImagePath = path.resolve(__dirname, '/images/products/');
         if (typeof product !== 'undefined') {
-            return res.render('product-create-form', {
-                product: product
+
+            return res.render('products/product-create-form', {
+                product: product,
+                productImagePath: productImagePath
             });
         }
-
         return res.render('products/product-create-form');
         
     },
     update: (req, res) => {
         const products = getAllProducts();
+        console.log(req.file)
         const changedProducts = products.map(product => {
             if (req.params.id == product.id) {
                 product.product_name = req.body.product_name,
                 product.description = req.body.description,
-                product.image = req.files[0].filename,
+                product.image = req.file ? req.file.filename : product.image,
                 product.category = req.body.category,
                 product.style = req.body.style,
                 product.volumen = req.body.volumen,
@@ -98,7 +100,7 @@ const controller = {
 
         writeProducts(changedProducts);
 
-        res.redirect('/products' + req.params.id);
+        res.redirect('/products/' + req.params.id);
     },
     remove: (req, res) => {
         const products = getAllProducts();

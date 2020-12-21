@@ -22,14 +22,14 @@ router.get('/', productsController.index);
 
 /*** CREATE PRODUCT ***/
 router.get('/create', productsController.create);
-router.post('/create', upload.any(), productsController.store);
+router.post('/create', upload.single('image'), productsController.store);
 
 /*** DETAIL PRODUCT ***/
 router.get('/:id', productsController.detail);
 
 /*** EDIT PRODUCT ***/
 router.get('/:id/edit', productsController.edit);
-router.put('/:id/edit', upload.any(), productsController.update);
+router.put('/:id/edit', upload.single('image'), productsController.update);
 
 /*** DELETE PRODUCT ***/
 router.delete('/:id/edit', productsController.remove);

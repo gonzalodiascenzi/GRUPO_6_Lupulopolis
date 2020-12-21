@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const bcryptjs = require('bcryptjs');
 
 /* Controllers Require */
 const usersController = require('../controllers/usersController');
+const validation = require('../middlewares/validation');
 
 
 /* GET users listing. */
 router.get('/login', usersController.showLogin);
-router.post('/login', usersController.processLogin);
+router.post('/login',  validation.loginValidation, usersController.processLogin);
 
 router.get('/register', usersController.showRegister);
-router.post('/register', usersController.processRegister)
+router.post('/register', validation.registerValidation, usersController.processRegister)
 
 module.exports = router;

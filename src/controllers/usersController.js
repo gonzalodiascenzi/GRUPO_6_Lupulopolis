@@ -5,21 +5,38 @@ const bcryptjs = require("bcryptjs");
 
 const controller = {
     showLogin: (req, res) => {
-        res.render('users/login');
+        return res.render('users/login');
     },
     processLogin: (req, res) => {
-        
+        const errors = validationResult(req);
 
+        if (!errors.isEmpty()) {
+            return res.render('users/login', {
+                errors: errors.errors,
+                old: req.body
+            });
+        }
+        
+        const userFound = userHelper.getUsers().find(user => user.email == req.body.email);
+
+        if (userFound) {
+            req.session.user = userFound;
+        }
+
+        if (req.body.remember) {
+            res.cookie("userLog", req.session.user);
+        }
+    
+        return res.redirect('/');
     },
     showRegister: (req, res) => {
-        res.render('users/register');
+        return res.render('users/register');
     },
-
     processRegister: (req, res) => {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-             res.render('users/register', {
+             return res.render('users/register', {
                 errors: errors.errors,
                 old: req.body
             });
@@ -37,7 +54,10 @@ const controller = {
         
         userHelper.writeUser(newUser);
 
-        res.redirect('/users/login');
+        return res.redirect('/users/login');
+    },
+    showProfile: (req, res) => {
+
     }
 }
 

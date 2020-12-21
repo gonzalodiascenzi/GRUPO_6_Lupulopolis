@@ -746,6 +746,10 @@ input[type=radio] {
   display: none;
 }
 
+#labels{
+  margin-top: 10px;
+}
+
 #labels label {
   display: block;
   color: #43434c;
@@ -758,6 +762,14 @@ input[type=radio] {
 label span {
   cursor: pointer;
   color: #349e97;
+}
+
+.remember-form{
+  color: #43434c;
+  font-weight: 600;
+  display: flex;
+  width: 25%;
+  margin-left: 90px;
 }
 
 /* PRODUCT CREATE FORM */

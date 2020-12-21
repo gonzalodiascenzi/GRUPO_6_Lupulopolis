@@ -47,7 +47,7 @@ const controller = {
 
         writeProducts(productsToSave);
 
-        res.redirect('/products');
+        res.redirect(`/products/${newProduct.id}`);
     },
     detail: (req, res) => {
         const product = productHelper.getAllProducts().find(product => product.id == req.params.id);
@@ -59,7 +59,7 @@ const controller = {
     edit: (req, res) => {
         const product = productHelper.getAllProducts().find(product => product.id == req.params.id);
         const productImagePath = path.resolve(__dirname, '/images/products/');
-        if (typeof product !== 'undefined') {
+        if (product != 'undefined') {
 
             return res.render('products/product-create-form', {
                 product: product,

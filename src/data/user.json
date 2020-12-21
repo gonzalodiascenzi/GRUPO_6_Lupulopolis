@@ -1,11 +1,20 @@
 [
-    {
-        "id" : 0,
-        "first_name" : "",
-        "last_name" : "",
-        "email" : "",
-        "password" : "",
-        "category" : "",
-        "image" : ""
-    }
+ {
+  "id": 0,
+  "first_name": "",
+  "last_name": "",
+  "email": "",
+  "password": "",
+  "category": "",
+  "image": ""
+ },
+ {
+  "id": 1,
+  "first_name": "",
+  "last_name": "",
+  "email": "matubossa@gmail.com",
+  "password": "$2a$10$2RgZBK2MHgNZEdWXrQeitOGfNJGpp9Da1H9x5KemReezBIgPIWzW6",
+  "category": "user",
+  "image": ""
+ }
 ]

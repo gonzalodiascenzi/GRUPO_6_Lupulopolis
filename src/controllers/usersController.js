@@ -16,11 +16,10 @@ const controller = {
     },
 
     processRegister: (req, res) => {
-        console.log("hola");
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            res.render('users/register', {
+             res.render('users/register', {
                 errors: errors.errors,
                 old: req.body
             });

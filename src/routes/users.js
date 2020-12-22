@@ -16,5 +16,6 @@ router.get('/register', guest, usersController.showRegister);
 router.post('/register', guest, validation.registerValidation, usersController.processRegister)
 
 router.get('/profile', auth, usersController.showProfile);
+router.post('/profile', auth, usersController.logout)
 
 module.exports = router;

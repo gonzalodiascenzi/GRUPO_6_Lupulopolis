@@ -775,11 +775,48 @@ label span {
 /* PROFILE */
 
 .profile-container{
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin: 15px auto;
   width: 50%;
-  height: 500px;
   background-color: #343a40;
 }
+
+.profile-container > img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  position: relative;
+  border-radius: 100%;
+  margin-top: 15px;
+  width: 200px;
+  height: 200px;
+}
+
+.profile-container > label{
+  margin-top: 15px;
+}
+
+.profile-container > input{
+  margin-top: 10px;
+}
+
+.profile-container > form{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.profile-container > form > button{
+  border: 0;
+  padding: 10px 40px;
+}
+
+
+
 
 /* PRODUCT CREATE FORM */
 
@@ -928,6 +965,7 @@ label span {
   .totals .totals-item .totals-value {
     width: 40%;
   }
+
 }
 
 @media (max-width: 600px){
@@ -1029,6 +1067,10 @@ label span {
   }
 
   .contact-btn{
+    width: 100%;
+  }
+
+  .profile-container{
     width: 100%;
   }
 

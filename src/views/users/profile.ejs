@@ -6,10 +6,30 @@
     <main>
       <div class="profile-container">
         <img src="/images/user/<%= userLog.image %> " alt="foto-perfil">
+
+        <label for="first_name">Nombre</label>
+        <input name="first_name" type="text" value="" disabled>
+
+        <label for="last_name">Apellido</label>
+        <input name="last_name" type="text" value="" disabled>
+
+        <label for="email">Email</label>
+        <input name="email" type="email" value="" disabled>
+
+        <label for="oldPassword">Old Password</label>
+        <input name="oldPassword" type="text" value="" >
+
+        <label for="newPassword">New Password</label>
+        <input name="newPassword" type="text" value="" disabled>
+
+        <label for="retypeNewPassword">Repeat Password</label>
+        <input name="retypeNewPassword" type="text" value="" disabled>
+
+        <form action="/users/profile" method="POST">
+          <button>Log Out</button>
+        </form>
       </div>
-      <form action="/" method="GET">|
-        <button>Log Out</button>
-      </form>
+      
     </main>
     <%- include('../partials/footer') %> 
   </body>

@@ -58,6 +58,12 @@ const controller = {
     },
     showProfile: (req, res) => {
         res.render('users/profile')
+    },
+    logout: (req, res) => {
+        res.clearCookie('userLog');
+        req.session.destroy();
+
+        res.redirect('/');
     }
 }
 

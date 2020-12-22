@@ -5,6 +5,7 @@ const router = express.Router();
 const usersController = require('../controllers/usersController');
 const validation = require('../middlewares/validation');
 const guest = require('../middlewares/guest');
+const auth = require('../middlewares/auth');
 
 
 /* GET users listing. */
@@ -14,6 +15,6 @@ router.post('/login',  guest, validation.loginValidation, usersController.proces
 router.get('/register', guest, usersController.showRegister);
 router.post('/register', guest, validation.registerValidation, usersController.processRegister)
 
-router.get('/profile', usersController.showProfile);
+router.get('/profile', auth, usersController.showProfile);
 
 module.exports = router;

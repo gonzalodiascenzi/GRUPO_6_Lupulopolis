@@ -1,35 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <%- include('./partials/head') %> 
+  <%- include('../partials/head') %> 
   <body>
-    <%- include('./partials/headerNavbar') %>
+    <%- include('../partials/headerNavbar') %>
     
     <div class="container-form-create">
-        <!-- <table>
-            <caption>Listado de Productos</caption>
-            <thead>
-                <tr>
-                    <th><img src="" alt="">IMAGE</th>
-                    <th>#ID</th>
-                    <th>PRODUCT NAME</th>
-                    <th>CATEGORY</th>
-                    <th>PRICE</th>
-                    <th>BREWER</th>
-                    <th>DISCOUNT</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>#</th>
-                    <th>#</th>
-                    <th>#</th>
-                    <th>#</th>
-                    <th>#</th>
-                    <th>#</th>
-                    <th>#</th>
-                </tr>
-            </tbody>
-        </table> -->
     <% if(typeof product !== 'undefined') {%> 
 
         <form action="/products/<%= product.id %>/edit?_method=PUT" class="form-create-product" method="POST" enctype="multipart/form-data">  
@@ -42,7 +17,7 @@
     
                 <p>
                     <label for="image">Imagen *</label>
-                    <input name="image" class="create-input" type="file" value="<%= product.image %>">
+                    <input name="image" class="create-input" type="file">
                 </p>
     
                 <p>
@@ -161,6 +136,6 @@
         <% } %> 
     </div>
 
-    <%- include('./partials/footer') %> 
+    <%- include('../partials/footer') %> 
   </body>
 </html>

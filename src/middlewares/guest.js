@@ -1,9 +1,7 @@
-function guest(req,res,next){
-    if (req.session.userLogged == undefined){
-        next();
-    } else {
-        res.redirect('/');
+module.exports = (req, res, next) => {
+    if (!req.session.user) {
+        return next();
     }
-};
 
-module.exports = guest;
+    return res.redirect('/');
+}

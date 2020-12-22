@@ -1,17 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
+const productHelper = require('../helpers/productHelper');
 
 const productsFilePath = path.resolve(__dirname, '../data/productData.json');
-
-function getAllProducts(){
-
-	const jsonProducts = fs.readFileSync(productsFilePath, 'utf-8');
-
-	const productsParsed = JSON.parse(jsonProducts);
-
-	return productsParsed;
-}
 
 function writeProducts(arrayToTransform) {
 	const productsJson = JSON.stringify(arrayToTransform, null, " ");
@@ -19,14 +11,14 @@ function writeProducts(arrayToTransform) {
 }
 
 function generateNewId(){
-	const products = getAllProducts();
+	const products = productHelper.getAllProducts();
 	return products.pop().id + 1;
 }
 
 const controller = {
     //Root - Inicio
     index: (req, res) => {
-        const allProducts = getAllProducts();
+        const allProducts = productHelper.getAllProducts();
 
         res.render('products', {
             allProducts: allProducts
@@ -34,13 +26,14 @@ const controller = {
     },
     create: (req, res) => {
         res.render('product-create-form');
+        return res.render('products/product-create-form');
     },
-    store: (req, res, next) => {
+    store: (req, res) => {
         const newProduct = {
             id: generateNewId(),
             product_name: req.body.product_name,
             description: req.body.description,
-            image: req.files[0].filename,
+            image: req.file.filename,
             category: req.body.category,
             style: req.body.style,
             volumen: req.body.volumen,
@@ -50,40 +43,44 @@ const controller = {
             discount: req.body.discount
         }
 
-        console.log(newProduct);
-        const products = getAllProducts();
+        const products = productHelper.getAllProducts();
         const productsToSave = [...products, newProduct];
 
         writeProducts(productsToSave);
 
-        res.redirect('/products');
+        return res.redirect(`/products/${newProduct.id}`);
     },
     detail: (req, res) => {
-        const product = getAllProducts().find(product => product.id == req.params.id);
+        const product = productHelper.getAllProducts().find(product => product.id == req.params.id);
 
         return res.render('productDetails', {
             product: product
         });
     },
     edit: (req, res) => {
-        const product = getAllProducts().find(product => product.id == req.params.id);
+        const product = productHelper.getAllProducts().find(product => product.id == req.params.id);
+        const productImagePath = path.resolve(__dirname, '/images/products/', product.image);
+        console.log(productImagePath)
+        if (product !== 'undefined') {
 
-        if (typeof product !== 'undefined') {
-            return res.render('product-create-form', {
-                product: product
+            return res.render('products/product-create-form', {
+                product: product,
+                productImagePath: productImagePath
             });
         }
 
         return res.render('product-create-form');
+        return res.render('products/product-create-form');
         
     },
     update: (req, res) => {
-        const products = getAllProducts();
+        const products = productHelper.getAllProducts();
+        console.log(req.file)
         const changedProducts = products.map(product => {
             if (req.params.id == product.id) {
                 product.product_name = req.body.product_name,
                 product.description = req.body.description,
-                product.image = req.files[0].filename,
+                product.image = req.file ? req.file.filename : product.image,
                 product.category = req.body.category,
                 product.style = req.body.style,
                 product.volumen = req.body.volumen,
@@ -99,14 +96,15 @@ const controller = {
         writeProducts(changedProducts);
 
         res.redirect('/products/' + req.params.id);
+        return res.redirect('/products/' + req.params.id);
     },
     remove: (req, res) => {
-        const products = getAllProducts();
+        const products = productHelper.getAllProducts();
         const productsRemoved = products.filter(product => product.id != req.params.id);
 
         writeProducts(productsRemoved);
         console.log(productsRemoved);
-        res.redirect('/products');
+        return res.redirect('/products');
     }
 };
 

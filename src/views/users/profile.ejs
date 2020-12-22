@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head') %> 
+  <body>
+    <%- include('../partials/headerNavbar') %> 
+    <main>
+      <div class="profile-container">
+        <img src="/images/user/<%= userLog.image %> " alt="foto-perfil">
+      </div>
+      <form action="/" method="GET">|
+        <button>Log Out</button>
+      </form>
+    </main>
+    <%- include('../partials/footer') %> 
+  </body>
+</html>

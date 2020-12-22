@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head') %> 
+  <body>
+    <%- include('../partials/headerNavbar') %> 
+    <div id="wrapper" >
+      <div>
+        <h1 class="logo-text"><span>Lupulo</span>polis</h1>
+        <h2>A World of Beers.</h2>
+      </div>
+      <form action="/users/register" method="POST">
+        <% if(typeof errors !== 'undefined') {%>
+          <ul>
+            <% for(error of errors) {%>
+              <li><%= error.msg %></li>
+            <% } %> 
+          </ul>
+        <% } %> 
+        <div id="inputs">
+          <div>
+            <input name="email" type="text" placeholder="email" autofocus>
+            <div>
+              <input name="password" type="password" placeholder="password">
+              <input name="retype" type="password" placeholder="repeat password">
+              </div>     
+          </div>
+        </div>
+        <input type="submit" value="register">
+        <p></p>
+        <div id="labels">
+          <label for="register">Already registed? <a href="/users/login"><span>Log In</span></a></label>
+        </div>
+      </form>
+    </div>
+    <%- include('../partials/footer') %> 
+  </body>
+</html>

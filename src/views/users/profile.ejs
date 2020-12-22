@@ -3,7 +3,14 @@
   <%- include('../partials/head') %> 
   <body>
     <%- include('../partials/headerNavbar') %> 
-    <h3>ESTE ES TU PROFILE</h3>
+    <main>
+      <div class="profile-container">
+        <img src="/images/user/<%= userLog.image %> " alt="foto-perfil">
+      </div>
+      <form action="/" method="GET">|
+        <button>Log Out</button>
+      </form>
+    </main>
     <%- include('../partials/footer') %> 
   </body>
 </html>

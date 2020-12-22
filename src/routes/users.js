@@ -4,14 +4,15 @@ const router = express.Router();
 /* Controllers Require */
 const usersController = require('../controllers/usersController');
 const validation = require('../middlewares/validation');
+const guest = require('../middlewares/guest');
 
 
 /* GET users listing. */
-router.get('/login', usersController.showLogin);
-router.post('/login',  validation.loginValidation, usersController.processLogin);
+router.get('/login', guest, usersController.showLogin);
+router.post('/login',  guest, validation.loginValidation, usersController.processLogin);
 
-router.get('/register', usersController.showRegister);
-router.post('/register', validation.registerValidation, usersController.processRegister)
+router.get('/register', guest, usersController.showRegister);
+router.post('/register', guest, validation.registerValidation, usersController.processRegister)
 
 router.get('/profile', usersController.showProfile);
 

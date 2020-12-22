@@ -5,7 +5,7 @@
     <%- include('../partials/headerNavbar') %>
     
     <div class="container-form-create">
-    <% if(typeof product != 'undefined') {%> 
+    <% if(typeof product !== 'undefined') {%> 
 
         <form action="/products/<%= product.id %>/edit?_method=PUT" class="form-create-product" method="POST" enctype="multipart/form-data">  
             

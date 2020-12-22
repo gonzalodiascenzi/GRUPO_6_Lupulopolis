@@ -9,6 +9,7 @@ var methodOverride = require('method-override')
 var indexRouter = require('./routes/index');
 var productsRouter = require('./routes/products');
 var usersRouter = require('./routes/users');
+var cartRouter = require('./routes/cart');
 
 const setLocals = require('./middlewares/setLocals');
 const cookiesExist = require('./middlewares/cookieExist');
@@ -36,6 +37,7 @@ app.use(cookiesExist);
 app.use('/', indexRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
+app.use('/cart', cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

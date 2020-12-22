@@ -25,7 +25,7 @@ const controller = {
         });
     },
     create: (req, res) => {
-        res.render('products/product-create-form');
+        return res.render('products/product-create-form');
     },
     store: (req, res) => {
         const newProduct = {
@@ -47,7 +47,7 @@ const controller = {
 
         writeProducts(productsToSave);
 
-        res.redirect(`/products/${newProduct.id}`);
+        return res.redirect(`/products/${newProduct.id}`);
     },
     detail: (req, res) => {
         const product = productHelper.getAllProducts().find(product => product.id == req.params.id);
@@ -58,8 +58,9 @@ const controller = {
     },
     edit: (req, res) => {
         const product = productHelper.getAllProducts().find(product => product.id == req.params.id);
-        const productImagePath = path.resolve(__dirname, '/images/products/');
-        if (product != 'undefined') {
+        const productImagePath = path.resolve(__dirname, '/images/products/', product.image);
+        console.log(productImagePath)
+        if (product !== 'undefined') {
 
             return res.render('products/product-create-form', {
                 product: product,
@@ -91,7 +92,7 @@ const controller = {
 
         writeProducts(changedProducts);
 
-        res.redirect('/products/' + req.params.id);
+        return res.redirect('/products/' + req.params.id);
     },
     remove: (req, res) => {
         const products = productHelper.getAllProducts();
@@ -99,7 +100,7 @@ const controller = {
 
         writeProducts(productsRemoved);
         console.log(productsRemoved);
-        res.redirect('/products');
+        return res.redirect('/products');
     }
 };
 

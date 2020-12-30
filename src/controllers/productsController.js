@@ -1,35 +1,21 @@
-const fs = require('fs');
-const path = require('path');
+const db = require('../database/models');
 
-const productHelper = require('../helpers/productHelper');
-
-const productsFilePath = path.resolve(__dirname, '../data/productData.json');
-
-function writeProducts(arrayToTransform) {
-	const productsJson = JSON.stringify(arrayToTransform, null, " ");
-	fs.writeFileSync(productsFilePath, productsJson);
-}
-
-function generateNewId(){
-	const products = productHelper.getAllProducts();
-	return products.pop().id + 1;
-}
 
 const controller = {
     //Root - Inicio
-    index: (req, res) => {
-        const allProducts = productHelper.getAllProducts();
+    index: async (req, res) => {
+        const allProducts = await db.Product.findAll();
 
         res.render('products/products', {
             allProducts: allProducts
         });
     },
     create: (req, res) => {
-        return res.render('products/product-create-form');
+        const product = undefined;
+        return res.render('products/product-create-form', {product});
     },
-    store: (req, res) => {
+    store: async (req, res) => {
         const newProduct = {
-            id: generateNewId(),
             product_name: req.body.product_name,
             description: req.body.description,
             image: req.file.filename,
@@ -42,64 +28,52 @@ const controller = {
             discount: req.body.discount
         }
 
-        const products = productHelper.getAllProducts();
-        const productsToSave = [...products, newProduct];
+        const product =await db.Product.create(newProduct);
 
-        writeProducts(productsToSave);
-
-        return res.redirect(`/products/${newProduct.id}`);
+        return res.redirect(`products/${product.id}`);
     },
-    detail: (req, res) => {
-        const product = productHelper.getAllProducts().find(product => product.id == req.params.id);
+    detail: async (req, res) => {
+        const product = await db.Product.findOne({ where: { id: req.params.id } });
 
         return res.render('products/productDetails', {
             product: product
         });
     },
-    edit: (req, res) => {
-        const product = productHelper.getAllProducts().find(product => product.id == req.params.id);
-        const productImagePath = path.resolve(__dirname, '/images/products/', product.image);
-        console.log(productImagePath)
-        if (product !== 'undefined') {
-
+    edit: async (req, res) => {
+        const product = await db.Product.findOne({ where: { id: req.params.id } })
+        
+        if (product) {
             return res.render('products/product-create-form', {
                 product: product,
-                productImagePath: productImagePath
             });
         }
-        return res.render('products/product-create-form');
+
+        return res.redirect('/products');
         
     },
-    update: (req, res) => {
-        const products = productHelper.getAllProducts();
-        console.log(req.file)
-        const changedProducts = products.map(product => {
-            if (req.params.id == product.id) {
-                product.product_name = req.body.product_name,
-                product.description = req.body.description,
-                product.image = req.file ? req.file.filename : product.image,
-                product.category = req.body.category,
-                product.style = req.body.style,
-                product.volumen = req.body.volumen,
-                product.origin = req.body.origin,
-                product.brewer = req.body.brewer,
-                product.price = req.body.price,
-                product.discount = req.body.discount
-            }
-
-            return product;
+    update: async (req, res) => {
+        await db.Product.update({
+            product_name: req.body.product_name,
+            description: req.body.description,
+            image: req.file ? req.file.filename : product.image,
+            category: req.body.category,
+            style: req.body.style,
+            volumen: req.body.volumen,
+            origin: req.body.origin,
+            brewer:req.body.brewer,
+            price: req.body.price,
+            discount: req.body.discount
+        }, {
+            where: {id : req.params.id}
         });
-
-        writeProducts(changedProducts);
-
+        
         return res.redirect('/products/' + req.params.id);
     },
-    remove: (req, res) => {
-        const products = productHelper.getAllProducts();
-        const productsRemoved = products.filter(product => product.id != req.params.id);
+    remove: async (req, res) => {
+        await db.Product.destroy({
+            where: {id : req.params.id}
+        })
 
-        writeProducts(productsRemoved);
-        console.log(productsRemoved);
         return res.redirect('/products');
     }
 };

@@ -17,7 +17,7 @@ Nuestro objetivo esta enfocado en empresas que fabriquen cervezas como tambien e
 ## `EQUIPO:`
 El equipo esta conformado por los siguientes tres integrantes: <br>
 
-### `Matias Bossa Valvede:` 
+### `Matias Bossa Valverde:` 
 - 26 años 
 - Estudiante de Tecnicatura Universitaria en Desarrollo de Software (ULP) 
 - Becado del Curso de Programacion Web FullStack (Digital House) <br>

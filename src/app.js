@@ -14,7 +14,11 @@ var cartRouter = require('./routes/cart');
 const setLocals = require('./middlewares/setLocals');
 const cookiesExist = require('./middlewares/cookieExist');
 
-var app = express();
+const indexRouter = require('./routes/index');
+const productsRouter = require('./routes/products');
+const usersRouter = require('./routes/users')
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '/views'));
@@ -34,6 +38,11 @@ app.use(methodOverride('_method'));
 app.use(setLocals);
 app.use(cookiesExist);
 
+
+
+app.get('/login', function (req, res){
+  res.render('login')
+})
 app.use('/', indexRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
@@ -49,6 +58,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
+  res.locals.path = req.path;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page

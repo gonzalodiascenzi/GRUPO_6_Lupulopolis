@@ -1,22 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-
-const productsFilePath = path.resolve(__dirname, '../data/productData.json');
-
-function getAllProducts(){
-
-	const jsonProducts = fs.readFileSync(productsFilePath, 'utf-8');
-
-	const productsParsed = JSON.parse(jsonProducts);
-
-	return productsParsed;
-}
+const db = require('../database/models');
 
 const controller = {
     //Root - Inicio
-    index: (req, res) => {
-        const allProducts = getAllProducts();
-
+    index: async (req, res) => {
+        const allProducts = await db.Product.findAll();
+        console.log(allProducts);
         res.render('index', {
             allProducts : allProducts
         });

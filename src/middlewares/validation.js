@@ -1,6 +1,6 @@
-const userHelper = require('../helpers/userHelper');
 const bcryptjs = require('bcryptjs');
 const { body } = require("express-validator");
+const db = require('../database/models');
 
 module.exports = {
     loginValidation: [
@@ -9,18 +9,20 @@ module.exports = {
                 .bail()
             .isEmail().withMessage("El email ingresado no es valido")
                 .bail()
-            .custom( (emailValue, { req }) => {
-                const userFound = userHelper.getUsers().find(user => user.email == emailValue);
+            .custom( async (emailValue, { req }) => {
+                const userFound = await db.User.findOne({ where: { email: emailValue } });
 
-                if (userFound) {
-                    if (userFound.email == emailValue && bcryptjs.compareSync(req.body.password, userFound.password)) {
-                        return true;
-                    }
-                    return false;
+                if (!userFound) {
+                    return Promise.reject('El usuario o contraseña no coiciden');
+                } 
+
+                if (userFound.email == emailValue && bcryptjs.compareSync(req.body.password, userFound.password)) {
+                    return true;
+                } else {
+                    return Promise.reject('El usuario o contraseña no coiciden')
                 }
 
-                return false;
-            }).withMessage("El usuario o contraseña no coiciden")
+            })
             
     ],
     registerValidation: [
@@ -29,9 +31,15 @@ module.exports = {
                 .bail()
             .isEmail().withMessage("El email ingresado no es valido")
                 .bail()
-            .custom( emailValue => {
-                return !userHelper.getUsers().find(user => user.email == emailValue);
-            }).withMessage("El mail ingresado ya se encuentra registrado"),
+            .custom(async emailValue => {
+                const emailExist = await db.User.findOne({ where: { email: emailValue } });
+
+                if (emailExist) {
+                    return Promise.reject("El mail ingresado ya se encuentra registrado")
+                }
+
+                return true;
+            }),
         body('password')
             .notEmpty().withMessage("El campo password esta vacio")
                 .bail()

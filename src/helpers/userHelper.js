@@ -1,14 +1,13 @@
 const fs = require('fs');
 const path = require('path');
+const db = require('../database/models');
 const userFilePath = path.resolve(__dirname, '../data/user.json');
 
 
 
 module.exports = {
-    getUsers() {
-        const jsonUsers = fs.readFileSync(userFilePath, 'utf-8');
-        const usersParsed = JSON.parse(jsonUsers);
-        return usersParsed;
+    async getUsers() {
+        return await db.User.findAll();;
     },
 
     writeUser(newUser){
@@ -17,8 +16,8 @@ module.exports = {
         fs.writeFileSync(userFilePath, userJson);
     },
 
-    generateNewId(){
-        const users = this.getUsers();
+    async generateNewId(){
+        const users = await db.User.findAll();
         return users.length == 0 ? 1 : users.pop().id + 1
     }
 }

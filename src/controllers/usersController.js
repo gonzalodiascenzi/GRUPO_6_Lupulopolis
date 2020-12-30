@@ -1,13 +1,14 @@
 const { validationResult } = require("express-validator");
 const userHelper = require("../helpers/userHelper");
 const bcryptjs = require("bcryptjs");
-
+const db = require('../database/models');
 
 const controller = {
     showLogin: (req, res) => {
+
         return res.render('users/login');
     },
-    processLogin: (req, res) => {
+    processLogin: async (req, res) => {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
@@ -17,7 +18,7 @@ const controller = {
             });
         }
         
-        const userFound = userHelper.getUsers().find(user => user.email == req.body.email);
+        const userFound = await db.User.findOne({ where: { email: req.body.email } });
 
         if (userFound) {
             req.session.user = userFound;
@@ -32,7 +33,7 @@ const controller = {
     showRegister: (req, res) => {
         return res.render('users/register');
     },
-    processRegister: (req, res) => {
+    processRegister: async (req, res) => {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
@@ -44,15 +45,15 @@ const controller = {
 
         const newUser = {
             id: userHelper.generateNewId(),
-            first_name: "",
-            last_name: "",
+            first_name: "aa",
+            last_name: "aa",
             email: req.body.email,
             password: bcryptjs.hashSync(req.body.password, 10),
             category: "user",
             image: ""
         }
-        
-        userHelper.writeUser(newUser);
+       
+        await db.User.create(newUser)
 
         return res.redirect('/users/login');
     },

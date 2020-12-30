@@ -1,8 +1,8 @@
-const userHelper = require("../helpers/userHelper");
+const db = require("../database/models");
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
     if (req.session.user) {
-        const userCategory = userHelper.getUsers().find(user => user.id == req.session.user.id);
+        const userCategory = await db.User.findOne({ where: { id: req.session.user.id } });
         if (userCategory.category == "admin") {
             return next();
         }

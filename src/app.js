@@ -14,9 +14,9 @@ var cartRouter = require('./routes/cart');
 const setLocals = require('./middlewares/setLocals');
 const cookiesExist = require('./middlewares/cookieExist');
 
-const indexRouter = require('./routes/index');
-const productsRouter = require('./routes/products');
-const usersRouter = require('./routes/users')
+var indexRouter = require('./routes/index');
+var productsRouter = require('./routes/products');
+var usersRouter = require('./routes/users')
 
 const app = express();
 

@@ -55,11 +55,14 @@ module.exports = (sequelize, dataTypes) => {
 
     const Product = sequelize.define(alias, cols, config);
 
-    /* Item.associate = function(models) {
-        Item.belongsTo(models.User, {
+     Product.associate = function(models) {
+        Product.belongsTo(models.User, {
             foreignKey: 'UserId',
             as: 'Usuario',
-            allowNull: true */
+            allowNull: true 
+        });
+    };
+
 
     return Product;
 }

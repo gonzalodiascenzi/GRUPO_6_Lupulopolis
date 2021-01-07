@@ -61,11 +61,15 @@ const controller = {
         res.render('users/profile')
     },
     logout: (req, res) => {
-        res.clearCookie('userLog');
-        req.session.destroy();
-
-        res.redirect('/');
-    }
-}
+         
+         req.session.destroy();
+        
+         
+         if (req.cookies.email){
+             res.clearCookie('email');
+         }
+         return res.redirect('/');
+     } 
+ };
 
 module.exports = controller;

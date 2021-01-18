@@ -1,0 +1,64 @@
+CREATE DATABASE IF NOT EXISTS lupulopolis_db2;
+
+USE lupulopolis_db2;
+
+CREATE TABLE products (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(30) NOT NULL,
+    description TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    category_id INT UNSIGNED NOT NULL,
+    style VARCHAR(30) NOT NULL,
+    volumen VARCHAR(30) NOT NULL,
+    origin VARCHAR(30) NOT NULL,
+    brewer VARCHAR(30) NOT NULL,
+    price FLOAT UNSIGNED NOT NULL,
+    discount FLOAT UNSIGNED  
+);
+
+CREATE TABLE users (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    category_id INT UNSIGNED NOT NULL,
+    image VARCHAR(255)
+);
+
+CREATE TABLE user_category(
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE product_category(
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE orders(
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    order_number INT UNSIGNED NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
+    total DOUBLE UNSIGNED NOT NULL
+);
+
+CREATE TABLE items(
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,  
+    product_name VARCHAR(30) NOT NULL,
+    unit_price DOUBLE UNSIGNED NOT NULL,
+    quantity INT UNSIGNED NOT NULL,
+    subTotal DOUBLE UNSIGNED NOT NULL,
+    images VARCHAR(255) NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
+    order_id INT UNSIGNED
+);
+
+ALTER TABLE users
+ADD FOREIGN KEY (category_id) REFERENCES user_category(id);
+
+ALTER TABLE products
+ADD FOREIGN KEY (category_id) REFERENCES product_category(id); 
+
+ALTER TABLE items
+ADD FOREIGN KEY (user_id) REFERENCES users(id); 

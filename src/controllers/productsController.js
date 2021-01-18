@@ -6,7 +6,7 @@ const controller = {
     index: async (req, res) => {
         const allProducts = await db.Product.findAll();
 
-        res.render('products/products', {
+        res.render('products', {
             allProducts: allProducts
         });
     },
@@ -35,7 +35,7 @@ const controller = {
     detail: async (req, res) => {
         const product = await db.Product.findOne({ where: { id: req.params.id } });
 
-        return res.render('products/productDetails', {
+        return res.render('productDetails', {
             product: product
         });
     },
@@ -49,7 +49,7 @@ const controller = {
         }
 
         return res.redirect('/products');
-        
+       
     },
     update: async (req, res) => {
         await db.Product.update({
@@ -66,7 +66,7 @@ const controller = {
         }, {
             where: {id : req.params.id}
         });
-        
+
         return res.redirect('/products/' + req.params.id);
     },
     remove: async (req, res) => {

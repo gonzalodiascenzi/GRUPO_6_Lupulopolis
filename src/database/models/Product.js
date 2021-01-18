@@ -48,11 +48,21 @@ module.exports = (sequelize, dataTypes) => {
         }
     }
     const config = {
+        tableName: 'Product',
         timestamps: false
     }
 
 
     const Product = sequelize.define(alias, cols, config);
+
+     Product.associate = function(models) {
+        Product.belongsTo(models.User, {
+            foreignKey: 'UserId',
+            as: 'Usuario',
+            allowNull: true 
+        });
+    };
+
 
     return Product;
 }

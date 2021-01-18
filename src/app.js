@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var productsRouter = require('./routes/products');
 var usersRouter = require('./routes/users');
 var cartRouter = require('./routes/cart');
+var adminRouter = require('./routes/admin');
 
 const setLocals = require('./middlewares/setLocals');
 const cookiesExist = require('./middlewares/cookieExist');
@@ -38,6 +39,7 @@ app.use('/', indexRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
+app.use('/admin', adminRouter);
 
 
 // catch 404 and forward to error handler

@@ -1,5 +1,4 @@
 const { validationResult } = require("express-validator");
-const userHelper = require("../helpers/userHelper");
 const bcryptjs = require("bcryptjs");
 const db = require('../database/models');
 
@@ -57,8 +56,9 @@ const controller = {
 
         return res.redirect('/users/login');
     },
-    showProfile: (req, res) => {
-        res.render('users/profile')
+    showProfile: async (req, res) => {
+        const user =  await db.User.findOne({where: {id : req.session.user.id}})
+        res.render('users/profile', { user });
     },
     logout: (req, res) => {
         res.clearCookie('userLog');

@@ -8,6 +8,5 @@ module.exports = async (req, res, next) => {
         }
         return res.redirect('/');
     }
-
     return res.redirect('/');
 }

@@ -1,6 +1,5 @@
 const db = require('../database/models');
 
-
 const controller = {
     //Root - Inicio
     index: async (req, res) => {

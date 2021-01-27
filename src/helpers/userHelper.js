@@ -9,7 +9,7 @@ module.exports = {
     },
     writeUser(newUser){
         const users = this.getUsers();
-        const userJson = JSON.stringify([...users, newUser], null, " ");
+        const userJson = JSON.stringify([...users, newUser], null, 2);
         fs.writeFileSync(userFilePath, userJson);
     },
     async generateNewId(){

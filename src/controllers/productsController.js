@@ -6,7 +6,7 @@ const controller = {
     index: async (req, res) => {
         const allProducts = await db.Product.findAll();
 
-        res.render('products', {
+        res.render('products/products', {
             allProducts: allProducts
         });
     },

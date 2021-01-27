@@ -22,7 +22,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
             type: dataTypes.STRING
         },
-        category: {
+        category_id: {
             allowNull: false,
             type: dataTypes.STRING
         },
@@ -38,9 +38,9 @@ module.exports = (sequelize, dataTypes) => {
     const User = sequelize.define(alias, cols, config);
 
     User.associate = function(models) {
-        User.hasMany(models.Product, {
-            foreignKey: 'userId',
-            as: 'Product-user'
+        User.belongsTo(models.User_Category, {
+            foreignKey: 'category_id',
+            as: 'category'
         });
     };
 

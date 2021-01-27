@@ -689,7 +689,7 @@ img{
 /*LOGIN */
 
 #wrapper {
-  margin: auto;
+  margin: 50px auto 100px auto;
   width: 40%;
   height: 50%;
   display: flex;
@@ -700,29 +700,8 @@ img{
   text-align: center;
 }
 
-#inputs {
-  height: 127px;
-  transition: height 0.5s ease-in-out;
-}
-
-#inputs div {
-  height: 41px;
-  transform-origin: 0 0;
-  transition: transform 0.5s ease-in-out;
-}
-
-#inputs > div > div > div {
-  transform: rotateX(0deg);
-  transform-style: preserve-3d;
-}
-
-#inputs > div > div > div input:nth-child(2), #inputs > div > div > div > div input:nth-child(2) {
-  transform: translateZ(-1px) rotateX(180deg);
-}
-
-#inputs > div > div > div > div {
-  transform: translateY(-41px) rotateX(0deg);
-  transform-style: preserve-3d;
+#inputs{
+  margin-top: 20px;
 }
 
 input {
@@ -765,6 +744,7 @@ input[type=radio] {
 
 #labels label {
   display: block;
+  position: relative;
   color: #43434c;
   font-weight: 600;
   height: 16px;

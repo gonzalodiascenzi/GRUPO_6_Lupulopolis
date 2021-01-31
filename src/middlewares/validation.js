@@ -1,6 +1,7 @@
 const bcryptjs = require('bcryptjs');
 const { body } = require("express-validator");
 const db = require('../database/models');
+const path = require('path');
 
 module.exports = {
     loginValidation: [
@@ -35,7 +36,8 @@ module.exports = {
                 .bail()
             .custom((value, { req }) => {
                 const validExtends = ['.jpg', '.jpeg', '.png', '.gif'];
-                const fileExtend = path.extname(req.files[0].originalame);
+                console.log(req.file);
+                const fileExtend = path.extname(req.file.originalname);
 
                 return validExtends.includes(fileExtend);
             }), 

@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 const bcryptjs = require("bcryptjs");
 const db = require('../database/models');
+const userHelper = require('../helpers/userHelper');
 
 const controller = {
     showLogin: (req, res) => {
@@ -44,12 +45,12 @@ const controller = {
 
         const newUser = {
             id: userHelper.generateNewId(),
-            first_name: "aa",
-            last_name: "aa",
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
             email: req.body.email,
             password: bcryptjs.hashSync(req.body.password, 10),
-            category: "user",
-            image: ""
+            category_id: 2,
+            image: req.file.originalname
         }
        
         await db.User.create(newUser)

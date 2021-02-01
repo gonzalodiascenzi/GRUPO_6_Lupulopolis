@@ -45,7 +45,7 @@ const controller = {
             email: req.body.email,
             password: bcryptjs.hashSync(req.body.password, 10),
             category_id: 2,
-            image: req.file.originalname
+            image: req.file.filename
         }
         await db.User.create(newUser)
         return res.redirect('/users/login');

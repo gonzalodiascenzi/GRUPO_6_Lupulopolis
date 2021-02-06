@@ -25,7 +25,7 @@ El equipo esta conformado por los siguientes tres integrantes: <br>
 ### `Gonzalo Patricio Di Ascenzi Severini:`  
 - 21 años 
 - Estudiante de Ingenieria Informática (UNSTA) 
--  Cursando Diplomatura en estrategia de ciberseguridad (UNSTA)
+- Diplomado universitario en estrategia de ciberseguridad (UNSTA)
 - Cursando Programación Web Full Stack (Digital House) <br>
 
 ### `Natalia María Cuello:`

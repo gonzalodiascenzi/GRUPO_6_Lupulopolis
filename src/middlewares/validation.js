@@ -1,6 +1,7 @@
 const bcryptjs = require('bcryptjs');
 const { body } = require("express-validator");
 const db = require('../database/models');
+const path = require('path');
 
 module.exports = {
     loginValidation: [
@@ -25,25 +26,26 @@ module.exports = {
         body('first_name')
             .notEmpty().withMessage("El campo obligatorio")
                 .bail()
-            .isLength({ min : 2 }),
+            .isLength({ min : 2 }).withMessage("Ingrese un minimo de 2 caracteres"),
         body('last_name')
             .notEmpty().withMessage("El campo obligatorio")
                 .bail()
-            .isLength({ min: 2 }),
+            .isLength({ min: 2 }).withMessage("Ingrese un minimo de 2 caracteres"),
         body('image')
-            .notEmpty().withMessage('El campo es obligatorio')
+            .notEmpty().withMessage('El campo es obligatorio 3')
                 .bail()
             .custom((value, { req }) => {
                 const validExtends = ['.jpg', '.jpeg', '.png', '.gif'];
-                const fileExtend = path.extname(req.files[0].originalame);
+                console.log(req.file);
+                const fileExtend = path.extname(req.file.originalname);
 
                 return validExtends.includes(fileExtend);
             }), 
         body('email')
             .notEmpty().withMessage("El campo obligatorio")
-            .bail()
+                .bail()
             .isEmail().withMessage("El email ingresado no es valido")
-            .bail()
+                .bail()
             .custom(async emailValue => {
                 const emailExist = await db.User.findOne({ where: { email: emailValue } });
 
@@ -55,12 +57,12 @@ module.exports = {
             }),
         body('password')
             .notEmpty().withMessage("El campo obligatorio")
-            .bail()
+                .bail()
             .isLength({ min: 8 }).withMessage("Ingrese un minimo de 8 caracteres")
-            .bail()
+                .bail()
             .custom((passwordValue, { req }) => {
 
-                return passwordValue == req.body.retype && (/[a-z]/.test(passwordValue)) && (/[A-Z]/.test(passwordValue)) && (/\d/g.test(passwordValue)) && (/^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/.test(passwordValue))             
+                return passwordValue == req.body.retype && passwordValue.match(/[a-z]/) && passwordValue.match(/[A-Z]/) && passwordValue.match(/\d/g) &&  passwordValue.match(/^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/)             
             }).withMessage("El password no contiene los caracteres minimos solicitados."),
         body('retype')
             .notEmpty().withMessage("Complete el campo repetir password")

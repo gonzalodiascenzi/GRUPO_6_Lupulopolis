@@ -8,7 +8,7 @@
         <h1 class="logo-text"><span>Lupulo</span>polis</h1>
         <h2>A World of Beers.</h2>
       </div>
-      <form action="/users/register" method="POST">
+      <form action="/users/register" method="POST" enctype="multipart/form-data">
         <% if(typeof errors !== 'undefined') {%>
           <ul>
             <% for(error of errors) {%>

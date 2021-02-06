@@ -9,16 +9,17 @@ const controller = {
             allProducts: allProducts
         });
     },
-    create: (req, res) => {
+    create: async (req, res) => {
         const product = undefined;
-        return res.render('products/product-create-form', {product});
+        const productCategory = await db.Product_Category.findAll();
+        return res.render('products/product-create-form', {product, productCategory});
     },
     store: async (req, res) => {
         const newProduct = {
             product_name: req.body.product_name,
             description: req.body.description,
             image: req.file.filename,
-            category: req.body.category,
+            category_id: req.body.category,
             style: req.body.style,
             volumen: req.body.volumen,
             origin: req.body.origin,
@@ -27,7 +28,7 @@ const controller = {
             discount: req.body.discount
         }
 
-        const product =await db.Product.create(newProduct);
+        const product = await db.Product.create(newProduct);
 
         return res.redirect(`products/${product.id}`);
     },

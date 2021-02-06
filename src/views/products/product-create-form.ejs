@@ -87,9 +87,9 @@
                     <p>
                         <label for="category">Categoria *</label>
                         <select name="category" id="category">
-                            <option value="Cerveza selected">Cerveza</option>
-                            <option value="Vino">Vino</option>
-                            <option value="Whisky">Whisky</option>
+                            <% for(let category of productCategory) {%> 
+                            <option value="<%= category.id %> "><%= category.name %></option>
+                            <% } %> 
                         </select>
                     </p>
         

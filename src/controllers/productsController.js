@@ -18,44 +18,54 @@ const controller = {
     },
     store: async (req, res) => {
         const errors = validationResult(req);
+        let product2 = undefined;
+        const productCategory = await db.Product_Category.findAll();
 
         if (!errors.isEmpty()) {
             res.render('products/product-create-form', {
+                product: product2,
+                productCategory,
                 errors: errors.errors,
                 old: req.body
             });
         }
 
-        const newProduct = {
-            product_name: req.body.product_name,
-            description: req.body.description,
-            image: req.file.filename,
-            category_id: req.body.category,
-            style: req.body.style,
-            volumen: req.body.volumen,
-            origin: req.body.origin,
-            brewer: req.body.brewer,
-            price: req.body.price,
-            discount: req.body.discount
-        }
+        console.log(req.file);
 
-        const product = await db.Product.create(newProduct);
+        // const newProduct = {
+        //     product_name: req.body.product_name,
+        //     description: req.body.description,
+        //     image: req.file.filename,
+        //     category_id: req.body.category,
+        //     style: req.body.style,
+        //     volumen: req.body.volumen,
+        //     origin: req.body.origin,
+        //     brewer: req.body.brewer,
+        //     price: req.body.price,
+        //     discount: req.body.discount
+        // }
 
-        return res.redirect(`/products/${product.id}`);
+        // const product = await db.Product.create(newProduct);
+
+        // return res.redirect(`/products/${product.id}`);
     },
     detail: async (req, res) => {
         const product = await db.Product.findOne({ where: { id: req.params.id } });
+        const productCategory = await db.Product_Category.findAll();
 
         return res.render('products/productDetails', {
-            product: product
+            product: product,
+            productCategory
         });
     },
     edit: async (req, res) => {
         const product = await db.Product.findOne({ where: { id: req.params.id } })
-        
+        const productCategory = await db.Product_Category.findAll();
+
         if (product) {
             return res.render('products/product-create-form', {
                 product: product,
+                productCategory
             });
         }
 
@@ -64,11 +74,12 @@ const controller = {
     },
     update: async (req, res) => {
         const errors = validationResult(req);
+        const productCategory = await db.Product_Category.findAll();
 
         if (!errors.isEmpty()) {
             res.render('products/product-create-form', {
                 errors: errors.errors,
-                old: req.body
+                productCategory
             });
         }
 

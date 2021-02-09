@@ -20,20 +20,21 @@ const productsController = require('../controllers/productsController');
 
 // ************ Middleware Require ************
 const adminAuth = require('../middlewares/adminAuth');
+const validator = require('../middlewares/validation');
 
 /*** GET ALL PRODUCTS ***/
 router.get('/', productsController.index);
 
 /*** CREATE PRODUCT ***/
 router.get('/create', adminAuth, productsController.create);
-router.post('/create', adminAuth, upload.single('image'), productsController.store);
+router.post('/create', upload.single('image'), adminAuth, validator.createProductValidation, productsController.store);
 
 /*** DETAIL PRODUCT ***/
 router.get('/:id',  productsController.detail);
 
 /*** EDIT PRODUCT ***/
 router.get('/:id/edit', adminAuth, productsController.edit);
-router.put('/:id/edit', adminAuth, upload.single('image'), productsController.update);
+router.put('/:id/edit', upload.single('image') ,adminAuth, validator.updateProductValidation, productsController.update);
 
 /*** DELETE PRODUCT ***/
 router.delete('/:id/edit', adminAuth, productsController.remove);

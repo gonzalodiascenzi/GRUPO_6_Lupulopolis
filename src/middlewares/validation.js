@@ -36,11 +36,11 @@ module.exports = {
             .bail()
             .custom((value, { req }) => {
                 const validExtends = ['.jpg', '.jpeg', '.png', '.gif'];
-                console.log(req.file);
+
                 const fileExtend = path.extname(req.file.originalname);
 
                 return validExtends.includes(fileExtend);
-            }),
+            }).withMessage(`La imagen debe contener uno de los formatos permitidos`),
         body('email')
             .notEmpty().withMessage("El campo obligatorio")
             .bail()
@@ -80,10 +80,10 @@ module.exports = {
         body('image')
             .custom((imageFile, { req }) => {
                 const extendsValid = [".jpg", ".jpeg", ".png", ".gif"];
-                const fileExtend = path.extname(req.file.originalame);
+                const fileExtend = path.extname(req.file.originalname);
 
                 return extendsValid.includes(fileExtend);
-            }).withMessage(`La imagen debe contener los formatos permitidos : ${extendsValid}`)
+            }).withMessage(`La imagen debe contener uno de los formatos permitidos`)
     ],
     createProductValidation: [
         body('product_name')
@@ -97,9 +97,9 @@ module.exports = {
         body('image')
             .custom(( imageFile, { req } )=> {
                 const extendsValid = [".jpg", ".jpeg", ".png", ".gif"];
-                const fileExtend = path.extname(req.file.originalame);
+                const fileExtend = path.extname(req.file.originalname);
 
                 return extendsValid.includes(fileExtend);
-            }).withMessage(`La imagen debe contener los formatos permitidos : ${extendsValid}`)
+            }).withMessage(`La imagen debe contener uno de los formatos permitidos`)
     ]
 }

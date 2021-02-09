@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS lupulopolis_db2;
+CREATE DATABASE IF NOT EXISTS lupulopolis_db;
 
-USE lupulopolis_db2;
+USE lupulopolis_db;
 
 CREATE TABLE products (
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

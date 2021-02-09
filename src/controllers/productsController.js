@@ -1,9 +1,10 @@
+const { validationResult } = require('express-validator');
 const db = require('../database/models');
 
 const controller = {
     //Root - Inicio
     index: async (req, res) => {
-        const allProducts = await db.Product.findAll();
+        const allProducts = await db.Product.findAll(); //findbypk -> SELECT * FROM products WHERE id = ?
 
         res.render('products/products', {
             allProducts: allProducts
@@ -15,6 +16,15 @@ const controller = {
         return res.render('products/product-create-form', {product, productCategory});
     },
     store: async (req, res) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            res.render('products/product-create-form', {
+                errors: errors.errors,
+                old: req.body
+            });
+        }
+
         const newProduct = {
             product_name: req.body.product_name,
             description: req.body.description,
@@ -30,12 +40,12 @@ const controller = {
 
         const product = await db.Product.create(newProduct);
 
-        return res.redirect(`products/${product.id}`);
+        return res.redirect(`/products/${product.id}`);
     },
     detail: async (req, res) => {
         const product = await db.Product.findOne({ where: { id: req.params.id } });
 
-        return res.render('productDetails', {
+        return res.render('products/productDetails', {
             product: product
         });
     },
@@ -52,6 +62,15 @@ const controller = {
        
     },
     update: async (req, res) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            res.render('products/product-create-form', {
+                errors: errors.errors,
+                old: req.body
+            });
+        }
+
         await db.Product.update({
             product_name: req.body.product_name,
             description: req.body.description,

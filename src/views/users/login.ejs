@@ -17,14 +17,15 @@
           </ul>
         <% } %> 
         <div id="inputs">
-              <div>
-              <input name="email" class="email" type="text" placeholder="email">
-              <div>
+          <div>
+            <input name="email" class="email" type="text" placeholder="email" value="">
+            <small class="emailError invisible"> Campo email es obligatorio </small>
+            <div>
               <input name="password" class="passwordLogin" type="password" placeholder="password">
-              <div>
-              <input type="submit" value="login">
-              </div>
-            
+              <small class="passwordError invisible"> Campo password es obligatorio </small>
+                <div>
+                  <input type="submit" value="login">
+                </div>
             </div>
           </div>
         </div>

@@ -7,7 +7,13 @@
     <div class="container-form-create">
     <% if(product) {%> 
         <form action="/products/<%= product.id %>/edit?_method=PUT" class="form-create-product" method="POST" enctype="multipart/form-data">  
-            
+            <% if(typeof errors !== 'undefined') {%>
+                <ul>
+                  <% for(error of errors) {%>
+                    <li><%= error.msg %></li>
+                  <% } %> 
+                </ul>
+              <% } %> 
             <div>
                 <p>
                     <label for="product_name">Nombre del producto *</label>
@@ -22,9 +28,9 @@
                 <p>
                     <label for="category">Categoria *</label>
                     <select name="category" id="category">
-                        <option value="Cerveza">Cerveza</option>
-                        <option value="Vino">Vino</option>
-                        <option value="Whisky">Whisky</option>
+                        <% for(let category of productCategory) {%> 
+                        <option value="<%= category.id %> "><%= category.name %></option>
+                        <% } %> 
                     </select>
                 </p>
     
@@ -72,7 +78,13 @@
         </form>
         <% }else{ %> 
             <form class="form-create-product" method="POST" enctype="multipart/form-data">  
-            
+                <% if(typeof errors !== 'undefined') {%>
+                    <ul>
+                      <% for(error of errors) {%>
+                        <li><%= error.msg %></li>
+                      <% } %> 
+                    </ul>
+                  <% } %> 
                 <div>
                     <p>
                         <label for="product_name">Nombre del producto *</label>

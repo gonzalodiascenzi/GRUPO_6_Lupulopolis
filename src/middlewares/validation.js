@@ -25,15 +25,15 @@ module.exports = {
     registerValidation: [
         body('first_name')
             .notEmpty().withMessage("El campo obligatorio")
-            .bail()
+                .bail()
             .isLength({ min: 2 }).withMessage("Ingrese un minimo de 2 caracteres"),
         body('last_name')
             .notEmpty().withMessage("El campo obligatorio")
-            .bail()
+                .bail()
             .isLength({ min: 2 }).withMessage("Ingrese un minimo de 2 caracteres"),
         body('image')
             .notEmpty().withMessage('El campo es obligatorio 3')
-            .bail()
+                .bail()
             .custom((value, { req }) => {
                 const validExtends = ['.jpg', '.jpeg', '.png', '.gif'];
 

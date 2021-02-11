@@ -18,12 +18,18 @@
         <% } %> 
         <div id="inputs">
           <div>
-            <input name="first_name" type="text" placeholder="Nombre">
-            <input name="last_name" type="text" placeholder="Apellido">
-            <input name="image" type="file">
-            <input name="email" type="text" placeholder="email" >
-            <input name="password" type="password" placeholder="Password">
-            <input name="retype" type="password" placeholder="repeat password">       
+            <input name="first_name" class="first_name" type="text" placeholder="Nombre">
+            <small class="first_name_error invisible">Campo first name obligatorio</small>
+            <input name="last_name" class="last_name" type="text" placeholder="Apellido">
+            <small class="last_name_error invisible">Campo first name obligatorio</small>
+            <input name="image" class="image" type="file">
+            <small class="image_error invisible">Campo first name obligatorio</small>
+            <input name="email" class="email" type="text" placeholder="email" >
+            <small class="emailError invisible"> Campo email es obligatorio </small>
+            <input name="password" class="password" type="password" placeholder="Password">
+            <small class="passwordError invisible"> Campo password es obligatorio </small>
+            <input name="retype" class="retype" type="password" placeholder="repeat password">
+            <small class="retype_error invisible">Campo first name obligatorio</small>       
           </div>
         </div>
         <input type="submit" value="register">

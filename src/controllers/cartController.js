@@ -4,6 +4,4 @@ const controller = {
         res.render('cart/productCart');
     }
 }
-
-
 module.exports = controller;

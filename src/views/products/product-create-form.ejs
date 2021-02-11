@@ -88,12 +88,14 @@
                 <div>
                     <p>
                         <label for="product_name">Nombre del producto *</label>
-                        <input name="product_name" class="create-input" type="text">
+                        <input name="product_name" class="product_name create-input product_name" type="text">
+                        <small class="product_name_error invisible">El nombre del producto es Obligatorio</small>
                     </p>
         
                     <p>
                         <label for="image">Imagen *</label>
-                        <input name="image" class="create-input" type="file">
+                        <input name="image" class="image create-input" type="file">
+                        <small class="image_error invisible">La imagen es Obligatorio</small>
                     </p>
         
                     <p>
@@ -137,7 +139,8 @@
         
                     <p>
                         <label for="description">Descripcion</label>
-                        <textarea name="description" id="description-form" cols="38" rows="10"></textarea>
+                        <textarea name="description" class="description" id="description-form" cols="38" rows="10"></textarea>
+                        <small class="description_error invisible">La descripcion producto es Obligatorio</small>
                     </p>
                 </div>
     

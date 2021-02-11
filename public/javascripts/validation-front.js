@@ -60,7 +60,7 @@ window.onload = function () {
     })
 
     image.addEventListener('blur', () => {
-        if (image.value == '' || !image.value.includes('@')) {
+        if (image.value == '' || image.value.includes('@')) {
             image_error.classList.remove('invisible');
         } else {
             image_error.classList.add('invisible'); 
@@ -79,7 +79,27 @@ window.onload = function () {
      * REGISTER/UPDATE VALIDATION PRODUCT
     */
     
+   const product_name = document.querySelector('input.product_name');
+   const description = document.querySelector('input.description');
+   
+   const product_name_error = document.querySelector('small.product_name_error');
+   const description_error = document.querySelector('small.description_error');
+   
+   product_name.addEventListener('blur', () => {
+    if (product_name.value == '' || product_name.value.length < 5) {
+        product_name_error.classList.remove('invisible');
+    } else {
+        product_name_error.classList.add('invisible'); 
+    }
+   })
     
+   description.addEventListener('blur', () => {
+    if (description.value == '' || description.value.length < 20) {
+        description_error.classList.remove('invisible');
+    } else {
+        description_error.classList.add('invisible'); 
+    }
+})
 
 }
 

@@ -184,7 +184,8 @@ nav{
   border: .5px solid transparent;
   border-radius: 20px;
   overflow: hidden;
-  margin: 30px 15px;
+  margin: 80px 80px;
+  padding: 0px
 }
 
 .product-card::before{

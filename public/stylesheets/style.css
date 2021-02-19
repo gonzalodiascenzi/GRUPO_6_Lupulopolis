@@ -208,8 +208,8 @@ nav{
   position: absolute;
   bottom: 0;
   left: 0;
-  font-weight: 600;
-  font-size: 8em;
+  font-weight: 900;
+  font-size: 12em;
   color:  rgba(0, 0, 0, 0.1);
 }
 
@@ -225,7 +225,7 @@ nav{
 
 .product-card .imgBx img {
   max-width: 70%;
-  transition: 0.5s;
+  transition: 0.1s;
 }
 
 .product-card:hover .imgBx img{

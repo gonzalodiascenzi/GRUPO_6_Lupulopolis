@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 const session = require('express-session');
 var logger = require('morgan');
 var methodOverride = require('method-override')
+var cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var productsRouter = require('./routes/products');
@@ -18,6 +19,8 @@ const cookiesExist = require('./middlewares/cookieExist');
 var indexRouter = require('./routes/index');
 var productsRouter = require('./routes/products');
 var usersRouter = require('./routes/users')
+var userApiRouter = require('./routes/apis/userApi')
+var productApiRouter = require('./routes/apis/productApi')
 
 const app = express();
 
@@ -25,6 +28,7 @@ const app = express();
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -49,6 +53,9 @@ app.use('/products', productsRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
 app.use('/admin', adminRouter);
+
+app.use('/api/users', userApiRouter);
+app.use('/api/products', productApiRouter);
 
 
 // catch 404 and forward to error handler

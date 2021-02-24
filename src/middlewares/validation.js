@@ -77,13 +77,13 @@ module.exports = {
             .notEmpty().withMessage("El campo es obligatorio")
             .bail()
             .isLength({ min: 20 }).withMessage("El campo debe tener al menos 20 caracteres"),
-        body('image')
-            .custom((imageFile, { req }) => {
-                const extendsValid = [".jpg", ".jpeg", ".png", ".gif"];
-                const fileExtend = path.extname(req.file.originalname);
+        // body('image')
+        //     .custom((imageFile, { req }) => {
+        //         const extendsValid = [".jpg", ".jpeg", ".png", ".gif"];
+        //         const fileExtend = path.extname(req.file.filename);
 
-                return extendsValid.includes(fileExtend);
-            }).withMessage(`La imagen debe contener uno de los formatos permitidos`)
+        //         return extendsValid.includes(fileExtend);
+        //     }).withMessage(`La imagen debe contener uno de los formatos permitidos`)
     ],
     createProductValidation: [
         body('product_name')

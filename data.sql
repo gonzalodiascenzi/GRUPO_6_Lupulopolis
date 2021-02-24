@@ -10,9 +10,18 @@ INSERT INTO products (id, product_name, description, image, category_id, style, 
 -- --------------------------------------------------------
 
 -- Volcado de datos para la tabla users
---
 
 INSERT INTO users (id, first_name, last_name, email, password, category_id, image) VALUES
 (1, 'Matias', 'Bossa', 'matubossa@gmail.com', '$2a$10$UxPeIxRGXciaORMBgmx8xuEFdQThfKJyscJv9Lcb9NrDZ6QASXqma', 1, ''),
 (2, 'aa', 'aa', '1111jejej@gmail.com', '$2a$10$P89iYdLtawR7w0NHGCiig.iu3AxzPV.javkwAvtRozGEdqjm/1t.W', 2 , ''),
 (3, 'aa', 'aa', 'jejej2@gmail.com', '$2a$10$JhGTUMTwMOapi2s653S48e9iZ8GX7W/tFSH/gqMyKgd3V0RQwaX6W', 1 , '');
+
+-- Volcado de datos para la tabla users_category
+INSERT INTO user_category (id, first_name, last_name, email, password, category_id, image) VALUES
+(1, 'Admin'),
+(2, 'User')
+
+-- Volcado de datos para la tabla product_category
+INSERT INTO product_category (id, first_name, last_name, email, password, category_id, image) VALUES
+(1, 'Cerveza'),
+(2, 'Whisky')

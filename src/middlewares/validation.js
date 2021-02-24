@@ -89,11 +89,11 @@ module.exports = {
         body('product_name')
             .notEmpty().withMessage("El campo es obligatorio")
                 .bail()
-            .isLength({ min: 5 }).withMessage("El campo debe tener al menos 5 caracteres"),
+            .isLength({ min: 5 }).withMessage("El campo product_name debe tener al menos 5 caracteres"),
         body('description')
             .notEmpty().withMessage("El campo es obligatorio")
                 .bail()
-            .isLength({ min: 20 }).withMessage("El campo debe tener al menos 20 caracteres"),
+            .isLength({ min: 20 }).withMessage("El campo description debe tener al menos 20 caracteres"),
         body('image')
             .custom(( imageFile, { req } )=> {
                 const extendsValid = [".jpg", ".jpeg", ".png", ".gif"];

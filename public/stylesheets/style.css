@@ -866,8 +866,8 @@ label span {
 .btn-product-submit{
   width: 200px;
   height: 50px;
-  float: right;
-  margin-right: 100px;
+  position: relative;
+  left: 50%;
   border: none;
   background-color: #494;
   border-radius: 5px;
@@ -876,9 +876,7 @@ label span {
 }
 
 .btn-remove{
-  position: absolute;
   margin-top: 15px;
-  right: 0;
   background-color: #a44;
 }
 

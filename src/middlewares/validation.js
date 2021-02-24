@@ -24,16 +24,16 @@ module.exports = {
     ],
     registerValidation: [
         body('first_name')
-            .notEmpty().withMessage("El campo obligatorio")
+            .notEmpty().withMessage("El campo nombre es obligatorio")
                 .bail()
-            .isLength({ min: 2 }).withMessage("Ingrese un minimo de 2 caracteres"),
+            .isLength({ min: 2 }).withMessage("Ingrese en el campo nombre un minimo de 2 caracteres"),
         body('last_name')
-            .notEmpty().withMessage("El campo obligatorio")
+            .notEmpty().withMessage("El campo apellido es obligatorio")
                 .bail()
-            .isLength({ min: 2 }).withMessage("Ingrese un minimo de 2 caracteres"),
+            .isLength({ min: 2 }).withMessage("Ingrese en el campo apellido un minimo de 2 caracteres"),
         body('image')
-            .notEmpty().withMessage('El campo es obligatorio 3')
-                .bail()
+            // .notEmpty().withMessage('El campo es obligatorio 3')
+            //     .bail()
             .custom((value, { req }) => {
                 const validExtends = ['.jpg', '.jpeg', '.png', '.gif'];
 
@@ -42,7 +42,7 @@ module.exports = {
                 return validExtends.includes(fileExtend);
             }).withMessage(`La imagen debe contener uno de los formatos permitidos`),
         body('email')
-            .notEmpty().withMessage("El campo obligatorio")
+            .notEmpty().withMessage("El campo email es obligatorio")
             .bail()
             .isEmail().withMessage("El email ingresado no es valido")
             .bail()
@@ -56,7 +56,7 @@ module.exports = {
                 return true;
             }),
         body('password')
-            .notEmpty().withMessage("El campo obligatorio")
+            .notEmpty().withMessage("El campo password es obligatorio")
             .bail()
             .isLength({ min: 8 }).withMessage("Ingrese un minimo de 8 caracteres")
             .bail()
